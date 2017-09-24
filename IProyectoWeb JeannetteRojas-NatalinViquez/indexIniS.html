@@ -57,6 +57,8 @@
         document.getElementById("codSeguridadtxt").value ="";
         document.getElementById("fechaVencimientotxt").value ="";
         debugger;
+        sessionStorage.setItem("username", nom);
+
 
        // document.write(localStorage.getItem('datos'));
     });
@@ -78,6 +80,7 @@
               debugger;
               linkNuevo.href = 'index.html';
               $("#butIniciarSesion").attr("href",'index.html');
+              sessionStorage.setItem("username", personaGuardada.nombre);
               break;
              // alert(personaGuardada.nombre);
             }
