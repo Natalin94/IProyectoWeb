@@ -9,6 +9,7 @@
 	<script>window.jQuery || document.write('<script src="js/jquery-1.11.2.min.js"><\/script>')</script>
 	<script src="js/materialize.min.js" ></script>
 	<script src="js/main.js" ></script>
+	 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 </head>
 <body>
 	<form id="LoginModal" class="modal modal-fixed-footer">
@@ -81,7 +82,7 @@
 	</form>
 	<nav class="NavBar full">
 		<div class="row">
-			<div class="tittles NavBar-logo col s12 m3">electronics</div>
+			<div class="tittles NavBar-logo col s12 m3">Zapateria Online..</div>
 			<ul class="NavBar-links col m9">
 				<li><a href="index.html" class="waves-effect">Home</a></li>
 				<li><a href="products.html" class="waves-effect">Products</a></li>
@@ -135,103 +136,80 @@
 			</div>
 		</div>
 	</div>
-	<section>
+
+	
+		
+		<section>
 		<div class="container">
 			<div class="row">
-				<h4 class="center-align tittles">Products</h4>
-				<div class="col s12 m6 l4">
-					<div class="card">
-						<div class="card-image waves-effect waves-block waves-light">
-							<img class="activator" src="assets/img/header.png">
-						</div>
-						<div class="card-content">
-							<span class="card-title activator grey-text text-darken-4">Card Title<i class="zmdi zmdi-more-vert right"></i></span>
-							<p><a href="#">This is a link</a></p>
-						</div>
-						<div class="card-reveal">
-							<span class="card-title grey-text text-darken-4">Card Title<i class="zmdi zmdi-close right"></i></span>
-							<p>Here is some more information about this product that is only revealed once clicked on.</p>
-						</div>
-					</div>
-				</div>
-				<div class="col s12 m6 l4">
-					<div class="card">
-						<div class="card-image waves-effect waves-block waves-light">
-							<img class="activator" src="assets/img/header.png">
-						</div>
-						<div class="card-content">
-							<span class="card-title activator grey-text text-darken-4">Card Title<i class="zmdi zmdi-more-vert right"></i></span>
-							<p><a href="#">This is a link</a></p>
-						</div>
-						<div class="card-reveal">
-							<span class="card-title grey-text text-darken-4">Card Title<i class="zmdi zmdi-close right"></i></span>
-							<p>Here is some more information about this product that is only revealed once clicked on.</p>
-						</div>
-					</div>
-				</div>
-				<div class="col s12 m6 l4">
-					<div class="card">
-						<div class="card-image waves-effect waves-block waves-light">
-							<img class="activator" src="assets/img/header.png">
-						</div>
-						<div class="card-content">
-							<span class="card-title activator grey-text text-darken-4">Card Title<i class="zmdi zmdi-more-vert right"></i></span>
-							<p><a href="#">This is a link</a></p>
-						</div>
-						<div class="card-reveal">
-							<span class="card-title grey-text text-darken-4">Card Title<i class="zmdi zmdi-close right"></i></span>
-							<p>Here is some more information about this product that is only revealed once clicked on.</p>
-						</div>
-					</div>
-				</div>
-				<div class="col s12 m6 l4">
-					<div class="card">
-						<div class="card-image waves-effect waves-block waves-light">
-							<img class="activator" src="assets/img/header.png">
-						</div>
-						<div class="card-content">
-							<span class="card-title activator grey-text text-darken-4">Card Title<i class="zmdi zmdi-more-vert right"></i></span>
-							<p><a href="#">This is a link</a></p>
-						</div>
-						<div class="card-reveal">
-							<span class="card-title grey-text text-darken-4">Card Title<i class="zmdi zmdi-close right"></i></span>
-							<p>Here is some more information about this product that is only revealed once clicked on.</p>
-						</div>
-					</div>
-				</div>
-				<div class="col s12 m6 l4">
-					<div class="card">
-						<div class="card-image waves-effect waves-block waves-light">
-							<img class="activator" src="assets/img/header.png">
-						</div>
-						<div class="card-content">
-							<span class="card-title activator grey-text text-darken-4">Card Title<i class="zmdi zmdi-more-vert right"></i></span>
-							<p><a href="#">This is a link</a></p>
-						</div>
-						<div class="card-reveal">
-							<span class="card-title grey-text text-darken-4">Card Title<i class="zmdi zmdi-close right"></i></span>
-							<p>Here is some more information about this product that is only revealed once clicked on.</p>
-						</div>
-					</div>
-				</div>
-				<div class="col s12 m6 l4">
-					<div class="card">
-						<div class="card-image waves-effect waves-block waves-light">
-							<img class="activator" src="assets/img/header.png">
-						</div>
-						<div class="card-content">
-							<span class="card-title activator grey-text text-darken-4">Card Title<i class="zmdi zmdi-more-vert right"></i></span>
-							<p><a href="#">This is a link</a></p>
-						</div>
-						<div class="card-reveal">
-							<span class="card-title grey-text text-darken-4">Card Title<i class="zmdi zmdi-close right"></i></span>
-							<p>Here is some more information about this product that is only revealed once clicked on.</p>
-						</div>
-					</div>
-				</div>
+
+			<script type="text/javascript">
+			debugger;
+			$(document).ready(function(){ 
+			debugger; 
+		        $(document).ready(function(){    
+		        for(var i=0, l=localStorage.length; i < l; i++) {
+		        	debugger;
+		        	//document.getElementById('demo').innerHTML ;
+		        	//alert(i);
+
+		        	 //$("#myHeader").innerHTML = "<h3>Hola Mundo!</h3>"
+		        	  /*  document.getElementById('myHeader').innerHTML = "ADIOS"+ i;
+
+		        	    var midiv = document.createElement("div");						
+						midiv.innerHTML = "<p>Este es el contenido de mi div</p>";
+						document.getElementById('myHeader').appendChild(midiv);*/
+						addElement();
+
+		        } 
+
+		        function addElement () { 
+				  // crea un nuevo div 
+				  // y añade contenido 
+				  var newDiv = document.createElement("div"); 
+				  var newContent = document.createTextNode("Hola!¿Qué tal?"); 
+				  newDiv.appendChild(newContent); //añade texto al div creado. 
+
+				  // añade el elemento creado y su contenido al DOM 
+				  var currentDiv = document.getElementById("div1"); 
+				  document.getElementById("myHeader").appendChild(newDiv);
+				  ///document.body.insertBefore(newDiv, currentDiv); 
+				}   
+		    });
+		 });    
+
+
+
+			</script>
 			</div>
 		</div>
-	</section>
+		</section>
+
+		<section id="myHeader">
+		<div id="demo" class="container">
+			<div class="row">
+			<!--<div  class="col s12 m6 l4">
+					<div class="card">
+						<div class="card-image waves-effect waves-block waves-light">
+							<img class="activator" src="assets/img/header.png">
+						</div>
+						<div class="card-content">
+							<span class="card-title activator grey-text text-darken-4">Card Title<i class="zmdi zmdi-more-vert right"></i></span>
+							<p><a href="#">This is a link</a></p>
+						</div>
+						<div class="card-reveal">
+							<span class="card-title grey-text text-darken-4">Card Title<i class="zmdi zmdi-close right"></i></span>
+							<p>Here is some more information about this product that is only revealed once clicked on.</p>
+						</div>
+				</div>
+			</div>-->
+
+			</div>
+	 </div>
+</section>
+
+
+
 	<footer class="footer">
 		<div class="container">
 			<div class="row">
