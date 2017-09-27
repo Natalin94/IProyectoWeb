@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Registrate/Inicia Sesion</title>
+  <link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,300,600' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+  <script type="text/javascript">
+    var persona = function(id, nombre, apellidos, edad, email, direccion, telefono, contraseña, numeroTarjeta, codigoSeguridad, fechaVencimiento ){
+      this.id = id;
+      this.nombre= nombre;
+      this.apellidos= apellidos;
+      this.edad= edad;
+      this.email= email;
+      this.direccion= direccion;
+      this.telefono= telefono;
+      this.contraseña = contraseña;
+      this.numeroTarjeta= numeroTarjeta;
+      this.codigoSeguridad= codigoSeguridad;
+      this.fechaVencimiento= fechaVencimiento;
+  }
+
+  $(document).ready(function(){    
+    $('#butRegistrarse').click(function(){        
+        /*Captura de datos escrito en los inputs*/  
+        var idVar = document.getElementById("idtxt").value;       
+        var nom = document.getElementById("nombretxt").value;
+        var apel = document.getElementById("apellidostxt").value;
+        var edadVar = document.getElementById("edadtxt").value;
+        var emailVar = document.getElementById("emailtxt").value;
+        var direccionVar= document.getElementById("direccióntxt").value;
+        var telefonoVar = document.getElementById("telefonotxt").value;
+        var contraseñaVar = document.getElementById("contraseñatxt").value;
+        var numTarjetaVar = document.getElementById("numTarjetatxt").value;
+        var codSeguridadVar = document.getElementById("codSeguridadtxt").value;
+        var fechaVencimientoVar = document.getElementById("fechaVencimientotxt").value;
+
+        var nuevaPersona =  new persona(idVar, nom , apel, edadVar, emailVar,direccionVar,telefonoVar,contraseñaVar, numTarjetaVar, codSeguridadVar,fechaVencimientoVar);
+        localStorage.setItem(idVar, JSON.stringify(nuevaPersona));
+
+        debugger;
+        /*Guardando los datos en el LocalStorage*/
+
+        /*Limpiando los campos o inputs*/
+        document.getElementById("idtxt").value ="";       
+        document.getElementById("nombretxt").value ="";
+        document.getElementById("apellidostxt").value="";
+        document.getElementById("edadtxt").value="";
+        document.getElementById("emailtxt").value ="";
+        document.getElementById("direccióntxt").value="";
+        document.getElementById("telefonotxt").value="";
+        document.getElementById("contraseñatxt").value="";
+        document.getElementById("numTarjetatxt").value = "";
+        document.getElementById("codSeguridadtxt").value ="";
+        document.getElementById("fechaVencimientotxt").value ="";
+        debugger;
+        sessionStorage.setItem("username", nom);
+
+
+       // document.write(localStorage.getItem('datos'));
+    });
+        var cont = 0;
+        $('#butIniciarSesion').click(function(){    
+        for(var i=0, l=localStorage.length; i < l; i++) {
+          var idIniciarVar = document.getElementById("idInicio").value;
+          var contraseñaIniciarVar = document.getElementById("contraseñaInicio").value;
+          debugger;
+          key = localStorage.key(i);
+          if(key == idIniciarVar){
+            
+            debugger;
+            personaGuardada = localStorage.getItem(key);
+            personaGuardada = JSON.parse(personaGuardada);
+            if(personaGuardada.contraseña == contraseñaIniciarVar){
+              //document.write(personaGuardada.nombre + "<br>" + personaGuardada.apellido);
+              var linkNuevo = $("#butIniciarSesion");
+              debugger;
+              linkNuevo.href = 'index.html';
+              $("#butIniciarSesion").attr("href",'index.html');
+              sessionStorage.setItem("username", personaGuardada.nombre);
+              break;
+             // alert(personaGuardada.nombre);
+            }
+            else{
+              alert('Lo siento,contraseña incorrecta');
+            }
+          }
+
+          if(cont == localStorage.length-1){
+              alert('Lo siento,no se encuentra registrado');
+            }
+          cont ++;         
+        }    
+    });    
+});
+
+  </script>
+  
+</head>
+
+<body>
+
+
+  <div class="form">
+      
+      <ul class="tab-group">
+        <li class="tab active"><a href="#login">Inicia Sesión</a></li>
+        <li class="tab "><a href="#signup">Registrate</a></li>
+      </ul>
+      
+      <div class="tab-content">
+
+      <div id="login">   
+          <h1>¡Bienvenido!</h1>
+          
+          <form action="/" method="post">
+          
+            <div class="field-wrap">
+            <label>
+              ID<span class="req">*</span>
+            </label>
+            <input id="idInicio" type="email"required autocomplete="off"/>
+          </div>
+
+          <div class="field-wrap">
+            <label>
+              Contraseña<span class="req">*</span>
+            </label>
+            <input id="contraseñaInicio" type="password"required autocomplete="off"/>
+          </div>
+
+          <h1><a id="butIniciarSesion" href='' style="font-size:40px" >Iniciar Sesión</a></h1>
+         <!-- <p class="forgot"><a href="#">Olvidaste la contraseña</a></p>-->
+           </form>
+        </div>
+
+
+        <div id="signup">   
+          <h1>Ingresa tus datos</h1>
+          
+          <form action="/" method="post">
+          
+          <div class="top-row">
+
+            <div class="field-wrap">
+              <label>
+                Id <span class="req">*</span>
+              </label>
+              <input id="idtxt" type="text" required autocomplete="off" />
+            </div>
+
+            <div class="field-wrap">
+              <label>
+                Nombre <span class="req">*</span>
+              </label>
+              <input id="nombretxt" type="text" required autocomplete="off" />
+            </div>
+
+           
+            <div class="field-wrap">
+              <label>
+                Apellidos <span class="req">*</span>
+              </label>
+              <input id="apellidostxt" type="text" required autocomplete="off" />
+            </div>
+          
+            <div class="field-wrap">
+              <label>
+                Edad <span class="req">*</span>
+              </label>
+              <input id="edadtxt" type="text" required autocomplete="off" />
+            </div>
+
+            <div class="field-wrap">
+              <label>
+                Email <span class="req">*</span>
+              </label>
+              <input id="emailtxt" type="text" required autocomplete="off" />
+            </div>
+
+            <div class="field-wrap">
+              <label>
+                Dirección <span class="req">*</span>
+              </label>
+              <input id="direccióntxt" type="text" required autocomplete="off" />
+            </div>
+
+            <div class="field-wrap">
+              <label>
+                Telefono <span class="req">*</span>
+              </label>
+              <input id="telefonotxt" type="text" required autocomplete="off" />
+            </div>
+        
+          <div class="field-wrap">
+            <label>
+              Contraseña<span class="req">*</span>
+            </label>
+            <input id="contraseñatxt" type="password"required autocomplete="off"/>
+          </div>
+
+          <div class="field-wrap">
+            <label>
+              Numero de tarjeta<span class="req">*</span>
+            </label>
+            <input id="numTarjetatxt" type="email"required autocomplete="off"/>
+          </div>
+
+          <div class="field-wrap">
+            <label>
+              Codigo de seguridad<span class="req">*</span>
+            </label>
+            <input id="codSeguridadtxt" type="text"required autocomplete="off"/>
+          </div>
+
+          <div class="field-wrap">
+            <label>
+              Fecha de vencimiento<span class="req">*</span>
+            </label>
+            <input id="fechaVencimientotxt" type="text"required autocomplete="off"/>
+          </div>
+
+          </div>
+
+        <h1> <a id="butRegistrarse" href='index.html' style="font-size:40px"  target="_blank"  >¡Registrarse!</a></h1> 
+         <!--<button type="submit" class="button button-block"/>¡Registrarse!</button> -->
+          
+          </form>
+
+        </div>
+       
+        
+      </div><!-- tab-content -->
+      
+</div> <!-- /form -->
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+
+      <script src="assets/js/index.js"></script>
+
+</body>
+</html>
