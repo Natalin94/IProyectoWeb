@@ -9,7 +9,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 
   <script type="text/javascript">
-    var persona = function(id, nombre, apellidos, edad, email, direccion, telefono, contraseña, numeroTarjeta, codigoSeguridad, fechaVencimiento ){
+    var persona = function(id, nombre, apellidos, edad, email, direccion, telefono, contraseña, numeroTarjeta, codigoSeguridad, fechaVencimiento, tipo){
       this.id = id;
       this.nombre= nombre;
       this.apellidos= apellidos;
@@ -21,6 +21,7 @@
       this.numeroTarjeta= numeroTarjeta;
       this.codigoSeguridad= codigoSeguridad;
       this.fechaVencimiento= fechaVencimiento;
+      this.tipo = tipo;
   }
 
   $(document).ready(function(){    
@@ -71,15 +72,22 @@
           key = localStorage.key(i);
           if(key == idIniciarVar){
             
-            debugger;
+           
             personaGuardada = localStorage.getItem(key);
             personaGuardada = JSON.parse(personaGuardada);
             if(personaGuardada.contraseña == contraseñaIniciarVar){
+               debugger;
               //document.write(personaGuardada.nombre + "<br>" + personaGuardada.apellido);
               var linkNuevo = $("#butIniciarSesion");
+              if (personaGuardada.tipo == "true"){
+                linkNuevo.href = "administrador.html";
+              }
+              else{
+                linkNuevo.href = "index.html";
+              }
               debugger;
-              linkNuevo.href = 'index.html';
-              $("#butIniciarSesion").attr("href",'index.html');
+              //linkNuevo.href = 'index.html';
+              $("#butIniciarSesion").attr("href",linkNuevo.href);
               sessionStorage.setItem("username", personaGuardada.nombre);
               break;
              // alert(personaGuardada.nombre);
