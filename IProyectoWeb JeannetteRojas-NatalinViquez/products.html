@@ -5,90 +5,23 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Products</title>
 	<link rel="stylesheet" type="text/css" href="css/main.css">
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script>window.jQuery || document.write('<script src="js/jquery-1.11.2.min.js"><\/script>')</script>
 	<script src="js/materialize.min.js" ></script>
 	<script src="js/main.js" ></script>
-	 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	
 </head>
 <body>
-	<form id="LoginModal" class="modal modal-fixed-footer">
-		<div class="modal-content">
-			<h5 class="center-align">Login</h5>
-			<div class="row">
-				<div class="input-field col s12">
-					<i class="zmdi zmdi-account-circle prefix"></i>
-					<input id="name" type="text" class="validate">
-					<label for="name">Name</label>
-				</div>
-				<div class="input-field col s12">
-					<i class="zmdi zmdi-lock prefix"></i>
-					<input id="password" type="password" class="validate">
-					<label for="password">Password</label>
-				</div>
-				<div class="col s12">
-					<p>User type</p>
-					<p>
-				      	<input name="group1" type="radio" id="test1" />
-				      	<label for="test1">Admin</label>
-				    </p>
-				    <p>
-				      	<input name="group1" type="radio" id="test2" />
-				      	<label for="test2">User</label>
-				    </p>
-				</div>
-			</div>
-		</div>
-		<div class="modal-footer">
-			<a href="#!" class="waves-effect btn-flat tooltipped" data-position="top" data-tooltip="Send"><i class="zmdi zmdi-mail-send"></i></a>
-			<a href="#!" class="modal-action modal-close waves-effect btn-flat tooltipped" data-position="top" data-tooltip="Cancel"><i class="zmdi zmdi-close"></i></a>
-		</div>
-	</form>
-	<form id="RegModal" class="modal modal-fixed-footer">
-		<div class="modal-content">
-			<h5 class="center-align">Registration</h5>
-			<div class="row">
-				<div class="input-field col s12">
-					<i class="zmdi zmdi-account prefix"></i>
-					<input id="name" type="text" class="validate">
-					<label for="name">Name</label>
-				</div>
-				<div class="input-field col s12">
-					<i class="zmdi zmdi-account prefix"></i>
-					<input id="lastname" type="text" class="validate">
-					<label for="lastname">Last Name</label>
-				</div>
-				<div class="input-field col s12">
-					<i class="zmdi zmdi-face prefix"></i>
-					<input id="username" type="text" class="validate">
-					<label for="username">User Name</label>
-				</div>
-				<div class="input-field col s12">
-					<i class="zmdi zmdi-lock prefix"></i>
-					<input id="password" type="password" class="validate">
-					<label for="password">Password</label>
-				</div>
-				<div class="input-field col s12">
-					<i class="zmdi zmdi-account-box prefix"></i>
-					<input id="DNI" type="text" class="validate">
-					<label for="DNI">DNI</label>
-				</div>
-			</div>
-		</div>
-		<div class="modal-footer">
-			<a href="#!" class="waves-effect btn-flat tooltipped" data-position="top" data-tooltip="Send"><i class="zmdi zmdi-mail-send"></i></a>
-			<a href="#!" class="modal-action modal-close waves-effect btn-flat tooltipped" data-position="top" data-tooltip="Cancel"><i class="zmdi zmdi-close"></i></a>
-		</div>
-	</form>
+
 	<nav class="NavBar full">
 		<div class="row">
 			<div class="tittles NavBar-logo col s12 m3">Zapateria Online..</div>
 			<ul class="NavBar-links col m9">
 				<li><a href="index.html" class="waves-effect">Home</a></li>
 				<li><a href="products.html" class="waves-effect">Products</a></li>
-				<li><a href="#RegModal" class="waves-effect modal-trigger">Registration</a></li>
+				<!--<li><a href="#RegModal" class="waves-effect modal-trigger">Registration</a></li>
 				<li><a href="#!" class="waves-effect btn-shopcart">Shopcart</a></li>
-				<li><a href="#LoginModal" class="waves-effect modal-trigger">Login</a></li>	
+				<li><a href="#LoginModal" class="waves-effect modal-trigger">Login</a></li>	-->
 			</ul>
 			<i class="zmdi zmdi-more-vert full btn-menu hide-on-med-and-up waves-effect"></i>
 		</div>
@@ -137,46 +70,93 @@
 		</div>
 	</div>
 
-	
-		
 		<section>
 		<div class="container">
 			<div class="row">
 
 			<script type="text/javascript">
-			debugger;
+
+			var arregloGuardar= [{id : 'zap1', nombre : "Cat", descripcion : "Lindo", precio : 2000, cantidad : 50, imagen:"http://media15.liverpool.com.mx/web/images/products/es_MX/xl/1034253206.jpg", sexo: "Mujer" } , {id : 'zap2', nombre : "Cat", descripcion : "Lindo", precio : 2000, cantidad : 50, imagen:"http://www.play-school.es/images/images/category_7/Caterpillar-Bruin-CL281C9Z-Zapatillas-Bajas-Hombre-Zapatos.jpg", sexo: "Hombre" }]
+
+			localStorage.setItem("productos",JSON.stringify(arregloGuardar));
+
+			arregloZ = localStorage.getItem("productos");
+			arregloZ = JSON.parse(arregloZ);
+			
+			
 			$(document).ready(function(){ 
 			debugger; 
-		        $(document).ready(function(){    
-		        for(var i=0, l=localStorage.length; i < l; i++) {
-		        	debugger;
-		        	//document.getElementById('demo').innerHTML ;
-		        	//alert(i);
+		        $(document).ready(function(){   
+		        var URLactual = window.location.href;
+		        	var valor= URLactual.split('?')
+		        	valorReal= valor[1];
+		        	
+		       	if (valorReal == "Todos"){
+		       		for(var i=0, l=arregloZ.length; i < l; i++) {	        						
+						addElement(arregloZ[i].imagen);						
+		        	} 
+		       	}
 
-		        	 //$("#myHeader").innerHTML = "<h3>Hola Mundo!</h3>"
-		        	  /*  document.getElementById('myHeader').innerHTML = "ADIOS"+ i;
+		       	else{
+		       		for(var i=0, l=arregloZ.length; i < l; i++) {
+		        	
+						if (arregloZ[i].sexo == valorReal){
+							addElement(arregloZ[i].imagen);
+						}				
+		        	} 
+		       	}
+		        
 
-		        	    var midiv = document.createElement("div");						
-						midiv.innerHTML = "<p>Este es el contenido de mi div</p>";
-						document.getElementById('myHeader').appendChild(midiv);*/
-						addElement();
-
-		        } 
-
-		        function addElement () { 
+		        function addElement (url) { 
 				  // crea un nuevo div 
 				  // y añade contenido 
 				  var newDiv = document.createElement("div"); 
-				  var newContent = document.createTextNode("Hola!¿Qué tal?"); 
-				  newDiv.appendChild(newContent); //añade texto al div creado. 
+				  var x = document.createElement("IMG");
+    			  //x.setAttribute("src", "images/zap2.jpg");
+    			  x.setAttribute("src", url);
+    			  x.setAttribute("width", "250");
+    			  x.setAttribute("height", "270");
+    			  
+    			  var butListaDeseos = document.createElement("INPUT");
+    			  var butCarrito = document.createElement("INPUT");
+
+    			  butListaDeseos.setAttribute("type", "button");
+    			  butCarrito.setAttribute("type", "button");
+    			  butListaDeseos.setAttribute("value", "Add listaDeseos");
+    			  butListaDeseos.setAttribute("id", "listaDeseos");
+    			  //butListaDeseos.setAttribute("click", agregarListaDeseos())
+    			  butCarrito.setAttribute("value", "Add Carrito");
+
 
 				  // añade el elemento creado y su contenido al DOM 
 				  var currentDiv = document.getElementById("div1"); 
 				  document.getElementById("myHeader").appendChild(newDiv);
+				  document.getElementById("myHeader").appendChild(x);
+				  document.getElementById("myHeader").appendChild(butListaDeseos);
+				  document.getElementById("myHeader").appendChild(butCarrito);
 				  ///document.body.insertBefore(newDiv, currentDiv); 
 				}   
-		    });
+				
+				$("#listaDeseos").click(function(){
+					arregloDeseos = localStorage.getItem("listaDeseos");
+
+					//arregloDeseos = JSON.parse(arregloDeseos);
+					array=[]
+					for(var i=0, l=arregloDeseos.length; i < l; i++) {
+						document.write(arregloDeseos[i])
+						array.push(arregloDeseos[i]);							
+		        	} 
+					array.push("{id:'prueba', idZap:'prueba'}");
+					localStorage.setItem("listaDeseos",JSON.stringify(array));
+					alert("gg")
+				});
+
+				
+		    });		
+
 		 });    
+
+			
 
 
 
@@ -188,21 +168,7 @@
 		<section id="myHeader">
 		<div id="demo" class="container">
 			<div class="row">
-			<!--<div  class="col s12 m6 l4">
-					<div class="card">
-						<div class="card-image waves-effect waves-block waves-light">
-							<img class="activator" src="assets/img/header.png">
-						</div>
-						<div class="card-content">
-							<span class="card-title activator grey-text text-darken-4">Card Title<i class="zmdi zmdi-more-vert right"></i></span>
-							<p><a href="#">This is a link</a></p>
-						</div>
-						<div class="card-reveal">
-							<span class="card-title grey-text text-darken-4">Card Title<i class="zmdi zmdi-close right"></i></span>
-							<p>Here is some more information about this product that is only revealed once clicked on.</p>
-						</div>
-				</div>
-			</div>-->
+			
 
 			</div>
 	 </div>
@@ -214,16 +180,14 @@
 		<div class="container">
 			<div class="row">
 				<div class="col s12 m6">
-					<h5>Lorem ipsum dolor</h5>
-					<p>
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-						consequat.
-					</p>
+					<h5>Información</h5>
+								<ul class="links">
+									<li><a href="#">Metodos de pago</a></li>
+									<li><a href="#">Codigo de compra</a></li>
+									<li><a href="#">Logistica de la empresa</a></li>
 				</div>
 				<div class="col s12 m6">
-					<h5 class="center-align">Lorem ipsum dolor</h5>
+					<h5 class="center-align">Contactanos</h5>
 					<ul class="center-align">
 						<li><a href="#!"><i class="zmdi zmdi-facebook"></i> &nbsp; Facebook</a></li>
 						<li><a href="#!"><i class="zmdi zmdi-twitter"></i> &nbsp; Twitter</a></li>
@@ -231,7 +195,7 @@
 						<li><a href="#!"><i class="zmdi zmdi-instagram"></i> &nbsp; Instagram</a></li>
 					</ul>	
 				</div>
-				<div class="col s12 tittles footer-copyright">electronics &copy; 2016</div>
+				<div class="col s12 tittles footer-copyright">zap &copy; 2016</div>
 			</div>
 		</div>
 	</footer>
