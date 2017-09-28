@@ -24,6 +24,42 @@
     <!-- Custom Fonts -->
     <link href="assets/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
+    <script type="text/javascript">
+        var producto = function(idP, nombreP, descripcion, precio, cantidad,imagen) {
+            // body...
+            this.idP = idP;
+            this.nombreP = nombreP;
+            this.descripcion = descripcion;
+            this.precio = precio;
+            this.cantidad = cantidad;
+            this.imagen = imagen;
+        }
+    $(document).ready(function(){
+        $('#bAgregar').click(function(){
+            var idV = document.getElementById("id").value; 
+            var nombrePV = document.getElementById("nombre").value;
+            var descripcionV = document.getElementById("descripcion").value;
+            var precioV = document.getElementById("precio").value;
+            var cantidadV = document.getElementById("cantidad").value;
+            var imagenV = document.getElementById("imagen").value;
+
+            var nuevoProducto = new producto(idV,nombrePV,descripcionV,precioV,cantidadV,imagenV);
+            localStorage.setItem(idV, JSON.stringify(nuevoProducto));
+            /*Guardando los datos en el LocalStorage*/
+
+            /*Limpiando los campos o inputs*/
+
+            document.getElementById("id").value = "";
+            document.getElementById("nombre").value = "";
+            document.getElementById("descripcion").value = "",
+            document.getElementById("precio").value = "";
+            document.getElementById("cantidad").value = "";
+            document.getElementById("imagen").value = "";
+        });
+    })
+
+    </script>
+
 </head>
 
 <body>
@@ -59,12 +95,12 @@
                         </li>
                        
                         <li>
-                            <a href="estudiantes.html"><i style="font-size:20px"></i> Productos<span></span></a>
+                            <a href="#"><i style="font-size:20px"></i> Productos<span></span></a>
                             
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
-                            <a href="reportes.html"><i style="font-size:20px"></i> Reportes</a>
+                            <a href="#"><i style="font-size:20px"></i> Reportes</a>
                         </li>
                        
                         
@@ -122,11 +158,11 @@
                                         </div>
                                         <div class="form-group">
                                             <label>Imagen</label>
-                                            <form name="formulario" action="envio.php" method="post" enctype="multipart/form-data"><input name="archivo" type="file" size="20"> 
+                                            <form name="formulario" action="envio.php" method="post" enctype="multipart/form-data"><input id="imagen" name="archivo" type="file" size="20"> 
                                         </form>
                                         </div>                                      
                                        
-                                        <button type="button" class="btn btn-default" onclick="agregarAdministrador()">Agregar Producto</button>
+                                        <button id="bAgregar" type="button" class="btn btn-default" onclick="agregarAdministrador()">Agregar Producto</button>
                                         <button type="reset" class="btn btn-default">Cancelar </button>
                                     </form>
                                 </div>
