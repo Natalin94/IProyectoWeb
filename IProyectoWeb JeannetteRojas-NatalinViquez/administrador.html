@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <script type="text/javascript" src="../js/funciones.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 
     <title>Mantenimiento de Productos</title>
 
@@ -34,29 +34,35 @@
             this.cantidad = cantidad;
             this.imagen = imagen;
         }
-    $(document).ready(function(){
-        $('#bAgregar').click(function(){
-            var idV = document.getElementById("id").value; 
-            var nombrePV = document.getElementById("nombre").value;
-            var descripcionV = document.getElementById("descripcion").value;
-            var precioV = document.getElementById("precio").value;
-            var cantidadV = document.getElementById("cantidad").value;
-            var imagenV = document.getElementById("imagen").value;
+        $(document).ready(function(){
+            debugger;
 
-            var nuevoProducto = new producto(idV,nombrePV,descripcionV,precioV,cantidadV,imagenV);
-            localStorage.setItem(idV, JSON.stringify(nuevoProducto));
-            /*Guardando los datos en el LocalStorage*/
+            $('#bAgregar').click(function(){
+                debugger;
+                var idV = document.getElementById("id").value; 
+                var nombrePV = document.getElementById("nombre").value;
+                var descripcionV = document.getElementById("descripcion").value;
+                var precioV = document.getElementById("precio").value;
+                var cantidadV = document.getElementById("cantidad").value;
+                var imagenV = document.getElementById("imagen").value;
 
-            /*Limpiando los campos o inputs*/
+                var nuevoProducto = new producto (idV,nombrePV,descripcionV,precioV,cantidadV,imagenV);
+                localStorage.setItem(idV, JSON.stringify(nuevoProducto));
+                alert("Producto agregado");
+                /*Guardando los datos en el LocalStorage*/
 
-            document.getElementById("id").value = "";
-            document.getElementById("nombre").value = "";
-            document.getElementById("descripcion").value = "",
-            document.getElementById("precio").value = "";
-            document.getElementById("cantidad").value = "";
-            document.getElementById("imagen").value = "";
+                /*Limpiando los campos o inputs*/
+
+                document.getElementById("id").value = "";
+                document.getElementById("nombre").value = "";
+                document.getElementById("descripcion").value = "",
+                document.getElementById("precio").value = "";
+                document.getElementById("cantidad").value = "";
+                document.getElementById("imagen").value = "";
         });
-    })
+
+
+    });
 
     </script>
 
@@ -132,11 +138,8 @@
                                         <li class="sidebar-search">
                                             <label>Ingrese el identificador del producto</label>
                                              <div class="input-group custom-search-form">
-                                             <input type="text" class="form-control" placeholder="Identificador" id="id">
+                                             <input class="form-control" placeholder="Identificador" id="id">
                                              <span class="input-group-btn">
-                                             <button class="btn btn-default" type="button">
-                                             <i class="fa fa-search"></i>
-                                             </button>
                                              </span>
                                              </div>
                                          </li>
@@ -158,11 +161,11 @@
                                         </div>
                                         <div class="form-group">
                                             <label>Imagen</label>
-                                            <form name="formulario" action="envio.php" method="post" enctype="multipart/form-data"><input id="imagen" name="archivo" type="file" size="20"> 
-                                        </form>
+                                            <input class="form-control" placeholder="URL" id="imagen">
                                         </div>                                      
-                                       
-                                        <button id="bAgregar" type="button" class="btn btn-default" onclick="agregarAdministrador()">Agregar Producto</button>
+                                    
+                                        <h4><a id="bAgregar" href='administrador.html'>Agregar producto</a></h4>
+
                                         <button type="reset" class="btn btn-default">Cancelar </button>
                                     </form>
                                 </div>
