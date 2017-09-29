@@ -76,9 +76,9 @@
 
 			<script type="text/javascript">
 
-			var arregloGuardar= [{id : 'zap1', nombre : "Cat", descripcion : "Lindo", precio : 2000, cantidad : 50, imagen:"http://media15.liverpool.com.mx/web/images/products/es_MX/xl/1034253206.jpg", sexo: "Mujer" } , {id : 'zap2', nombre : "Cat", descripcion : "Lindo", precio : 2000, cantidad : 50, imagen:"http://www.play-school.es/images/images/category_7/Caterpillar-Bruin-CL281C9Z-Zapatillas-Bajas-Hombre-Zapatos.jpg", sexo: "Hombre" }]
+			/*var arregloGuardar= [{id : 'zap1', nombre : "Cat", descripcion : "Lindo", precio : 2000, cantidad : 50, imagen:"http://media15.liverpool.com.mx/web/images/products/es_MX/xl/1034253206.jpg", sexo: "Mujer" } , {id : 'zap2', nombre : "Cat", descripcion : "Lindo", precio : 2000, cantidad : 50, imagen:"http://www.play-school.es/images/images/category_7/Caterpillar-Bruin-CL281C9Z-Zapatillas-Bajas-Hombre-Zapatos.jpg", sexo: "Hombre" }]*/
 
-			localStorage.setItem("productos",JSON.stringify(arregloGuardar));
+			//localStorage.setItem("productos",JSON.stringify(arregloGuardar));
 
 			arregloZ = localStorage.getItem("productos");
 			arregloZ = JSON.parse(arregloZ);
@@ -138,20 +138,18 @@
 				}   
 				
 				$("#listaDeseos").click(function(){
-					arregloDeseos = localStorage.getItem("listaDeseos");
-
-					//arregloDeseos = JSON.parse(arregloDeseos);
+					arregloDeseos = localStorage.getItem("listaDeseos")
+					arregloDeseos = JSON.parse(arregloDeseos);
+					//alert(arregloDeseos);
 					array=[]
 					for(var i=0, l=arregloDeseos.length; i < l; i++) {
 						document.write(arregloDeseos[i])
 						array.push(arregloDeseos[i]);							
 		        	} 
-					array.push("{id:'prueba', idZap:'prueba'}");
+					array.push("{id:'"+sessionStorage.username+"' , idZap:'prueba'}");
 					localStorage.setItem("listaDeseos",JSON.stringify(array));
-					alert("gg")
 				});
 
-				
 		    });		
 
 		 });    
