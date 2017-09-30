@@ -25,13 +25,22 @@
     <link href="assets/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
     <script type="text/javascript">
-        var producto = function(idP, nombreP, descripcion, precio, cantidad,imagen) {
+
+    /*var arregloProductoGuardar= [{id : 'zap1', nombre : "Cat", descripcion : "Lindo", precio : 2000, cantidad : 50, imagen:"http://media15.liverpool.com.mx/web/images/products/es_MX/xl/1034253206.jpg", categoria: "Mujer" } , {id : 'zap2', nombre : "Cat", descripcion : "Lindo", precio : 2000, cantidad : 50, imagen:"http://www.play-school.es/images/images/category_7/Caterpillar-Bruin-CL281C9Z-Zapatillas-Bajas-Hombre-Zapatos.jpg", categoria: "Hombre" }]
+
+            localStorage.setItem("productos",JSON.stringify(arregloProductoGuardar));*/
+
+            arregloP = localStorage.getItem("productos");
+            arregloP = JSON.parse(arregloP);
+
+        var producto = function(idP, nombreP, descripcion, precio, cantidad,categoria,imagen) {
             // body...
             this.idP = idP;
             this.nombreP = nombreP;
             this.descripcion = descripcion;
             this.precio = precio;
             this.cantidad = cantidad;
+            this.categoria = categoria;
             this.imagen = imagen;
         }
         $(document).ready(function(){
@@ -44,11 +53,17 @@
                 var descripcionV = document.getElementById("descripcion").value;
                 var precioV = document.getElementById("precio").value;
                 var cantidadV = document.getElementById("cantidad").value;
+                var categoriaV = document.getElementById("categoria").value;
                 var imagenV = document.getElementById("imagen").value;
 
-                var nuevoProducto = new producto (idV,nombrePV,descripcionV,precioV,cantidadV,imagenV);
-                localStorage.setItem(idV, JSON.stringify(nuevoProducto));
+                var nuevoProducto = new producto (idV,nombrePV,descripcionV,precioV,cantidadV,categoriaV,imagenV);
+                //localStorage.setItem(idV, JSON.stringify(nuevoProducto));
+                debugger;
+                
+
+                
                 alert("Producto agregado");
+                
                 /*Guardando los datos en el LocalStorage*/
 
                 /*Limpiando los campos o inputs*/
@@ -58,8 +73,30 @@
                 document.getElementById("descripcion").value = "",
                 document.getElementById("precio").value = "";
                 document.getElementById("cantidad").value = "";
+                document.getElementById("categoria").value= "";
                 document.getElementById("imagen").value = "";
         });
+
+            /*$('#bEliminar').click(function(){
+                debugger;
+                var idEliminar = document.getElementById("id").value;
+                var nombre = localStorage.getItem("id");
+                key = localStorage.key(0);
+                debugger;
+
+                productoEliminar = localStorage.getItem(key);
+                productoEliminar = JSON.parse(productoEliminar);
+                debugger;
+                if(productoEliminar.id == idEliminar){
+                    debugger;
+                    localStorage.removeItem("id");
+                    alert('producto eliminado');
+                }
+                else{
+                    alert('no lo encuentra');
+                }
+                
+            });*/
 
 
     });
@@ -160,6 +197,13 @@
                                             <input class="form-control" placeholder="Cantidad" id="cantidad">
                                         </div>
                                         <div class="form-group">
+                                            <label>Categoría</label><br>
+                                            <input class="form-control" placeholder="Categoria" id="categoria">
+                                            <label><input type="checkbox" id="categoriaM" value="first_checkbox"> Mujer</label><br>
+                                            <input type="checkbox" id="categoriaH" value="second_checkbox"> <label for="cbox2">Hombre</label><br>
+                                            <input type="checkbox" id="categoriaN" value="second_checkbox"> <label for="cbox3">Niños</label>
+                                        </div>
+                                        <div class="form-group">
                                             <label>Imagen</label>
                                             <input class="form-control" placeholder="URL" id="imagen">
                                         </div>                                      
@@ -170,7 +214,7 @@
                                     </form>
                                 </div>
                                 <div class="col-lg-6">
-                                    <button type="submit" class="btn btn-default" onclick="eliminarAdministrador()">Eliminar producto</button>  
+                                    <button id="bEliminar" type="submit" class="btn btn-default">Eliminar producto</button>  
                                     <button type="submit" class="btn btn-default">Actualizar producto</button>                                
                                 </div>
                                 <div id="resultado"></div>
