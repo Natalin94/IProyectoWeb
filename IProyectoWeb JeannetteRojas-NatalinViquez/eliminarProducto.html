@@ -37,11 +37,11 @@
                     array.push(arregloP[i]);                       
                     var idEliminar = document.getElementById("id").value;
                     debugger;
-                    if(array[i].id == idEliminar){
+                    if(arregloP[i].idP == idEliminar){
                         debugger;
                         //funcion eliminar
-                        //array.splice(i,1);
-                        array.removeItem(i);
+                        array.splice(i,1);
+                        //array.removeItem(i);
                         debugger;
                         //delete array[i];
                         debugger;
@@ -51,8 +51,8 @@
                     else{
                         
                     }
+                    alert('no lo encuentra');
                 }
-                alert('no lo encuentra');
                 localStorage.setItem("productos",JSON.stringify(array));
 
                 
