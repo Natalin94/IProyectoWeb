@@ -10,7 +10,7 @@
     <meta name="author" content="">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 
-    <title>Mantenimiento de Productos</title>
+    <title>Actualización de Productos</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
@@ -43,8 +43,26 @@
         }
         $(document).ready(function(){
             debugger;
+            $('#bCargarDatos').click(function(){
+                arregloP = localStorage.getItem("productos");
+                arregloP = JSON.parse(arregloP);
+                array=[]
+                for (var i=0, l = arregloP.length; i<l; i++){
+                    array.push(arregloP[i]);                       
+                    var idBuscar = document.getElementById("id").value;
+                    debugger;
+                    if(array[i].id == idBuscar){
+                        debugger;
+                        //cargar datos
+                        break;
+                    }
+                    else{
+                        //alert('Intenta con otro id.');
+                    }
+                }
+                alert('intenta con otro');
 
-            
+            });
 
          });
 
@@ -120,7 +138,7 @@
                                              </div>
                                          </li>
                                         <div class="form-group">
-                                            <button>Cargar Datos</button>
+                                            <button id="bCargarDatos">Cargar Datos</button>
                                         </div>
                                         <div class="form-group">
                                             <label>Nombre del producto</label>
@@ -150,10 +168,10 @@
                                             <input class="form-control" placeholder="URL" id="imagen">
                                         </div>                                      
                                     
-                                        <button id="" class="btn btn-default"><a href="administrador.html">Atrás</a></button>
+                                        <a href="administrador.html" class="btn btn-default">Atrás</a>
 
                                         <button type="reset" class="btn btn-default">Cancelar </button>  
-                                        <button id="bActualizar" class="btn btn-default"><a href="actualizarProducto.html">Actualizar producto</a></button>
+                                        <button id="" class="btn btn-default">Actualizar producto</button>
                                     </form>
                                 </div>
                                 <div class="col-lg-6">

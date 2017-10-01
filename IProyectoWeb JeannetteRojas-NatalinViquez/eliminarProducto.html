@@ -46,11 +46,13 @@
                         //delete array[i];
                         debugger;
                         alert('producto eliminado');
+                        break;
                     }
                     else{
-                        alert('no lo encuentra');
+                        
                     }
                 }
+                alert('no lo encuentra');
                 localStorage.setItem("productos",JSON.stringify(array));
 
                 
@@ -134,7 +136,7 @@
                                             
                                         </div>                                      
                                     
-                                        <button id="" class="btn btn-default"><a href="administrador.html">Atrás</a></button>
+                                        <a href="administrador.html" class="btn btn-default">Atrás</a>
 
                                         <button type="reset" class="btn btn-default">Cancelar </button>
                                         <button id="bEliminar" type="submit" class="btn btn-default">Eliminar producto</button>  
