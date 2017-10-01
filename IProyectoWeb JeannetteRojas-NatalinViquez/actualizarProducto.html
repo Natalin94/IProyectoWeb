@@ -51,9 +51,20 @@
                     array.push(arregloP[i]);                       
                     var idBuscar = document.getElementById("id").value;
                     debugger;
-                    if(array[i].id == idBuscar){
+                    if(arregloP[i].idP == idBuscar){
                         debugger;
+                        //obteniendo los datos
+                        
                         //cargar datos
+                        alert('encontrado');
+                        debugger;
+                        document.getElementById("nombre").innerHTML = nombre;
+                        document.getElementById("descripcion").value = descripcion,
+                        document.getElementById("precio").value = precio;
+                        document.getElementById("cantidad").value = cantidad;
+                        document.getElementById("categoria").value= categoria;
+                        document.getElementById("imagen").value = imagen;
+
                         break;
                     }
                     else{
