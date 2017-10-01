@@ -101,7 +101,7 @@
 	       			if(arregloZ[i].id == sessionStorage.getItem("username")){
 	       				
 	       				for (var j=0, n=arregloProductos.length; j < n; j++){
-	       					if(arregloProductos[j].id == arregloZ[i].idZap){
+	       					if(arregloProductos[j].idP == arregloZ[i].idZap){
 	       						addElement(arregloProductos[j].imagen)
 		       					debugger;	
 	       					}		
@@ -151,41 +151,18 @@
 					if (arregloCarro == null){
 						array=[];
 						localStorage.setItem("listaCarro",array);
-						alert("Entro al if")
-						agregarAlCarro(true, botonId);
+						
+						comprar(true, botonId);
 					}
 					else{
-						alert("Entró al else")
-						agregarAlCarro(false, botonId);
+						
+						comprar(false, botonId);
 					}		
 						
 				});
 
-				function agregarAlCarro(indicador, idBoton){
+				function comprar(indicador, idBoton){
 
-					if (indicador == true){
-						arregloCarro = localStorage.getItem("listaCarro")
-					}
-
-					if (indicador == false){
-						arregloCarro = localStorage.getItem("listaCarro")
-						arregloCarro = JSON.parse(arregloCarro);
-					}
-				
-					array=[]
-					for(var i=0, l=arregloCarro.length; i < l; i++) {
-						//document.write(arregloDeseos[i])
-						array.push(arregloCarro[i]);						
-		        	} 
-		        	debugger;
-
-		        	var persona = {
-						id : sessionStorage.username,
-						idZap : idBoton
-					};	
-		        	prueba= JSON.stringify(persona);
-					array.push(persona);
-					localStorage.setItem("listaCarro",JSON.stringify(array));
 				}
 
 		    });		

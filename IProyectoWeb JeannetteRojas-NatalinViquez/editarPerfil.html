@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    <title>Editar Perfil de Usuario</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="assets/css/metisMenu.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="assets/css/sb-admin-2.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="assets/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <script type="text/javascript">
+
+    /*var arregloProductoGuardar= [{id : 'zap1', nombre : "Cat", descripcion : "Lindo", precio : 2000, cantidad : 50, imagen:"http://media15.liverpool.com.mx/web/images/products/es_MX/xl/1034253206.jpg", categoria: "Mujer" } , {id : 'zap2', nombre : "Cat", descripcion : "Lindo", precio : 2000, cantidad : 50, imagen:"http://www.play-school.es/images/images/category_7/Caterpillar-Bruin-CL281C9Z-Zapatillas-Bajas-Hombre-Zapatos.jpg", categoria: "Hombre" }]
+
+            localStorage.setItem("productos",JSON.stringify(arregloProductoGuardar));*/
+
+            
+        var producto = function(idP, nombreP, descripcion, precio, cantidad,categoria,imagen) {
+            // body...
+            this.idP = idP;
+            this.nombreP = nombreP;
+            this.descripcion = descripcion;
+            this.precio = precio;
+            this.cantidad = cantidad;
+            this.categoria = categoria;
+            this.imagen = imagen;
+        }
+        $(document).ready(function(){
+            debugger;
+
+    
+
+            $('#bEliminar').click(function(){
+            
+                
+            });
+
+    });
+
+    </script>
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">Inicio</a>
+            </div>
+            <!-- /.navbar-header -->
+
+            <!-- /.navbar-static-side -->
+        </nav>
+
+        <script type="text/javascript">
+
+
+        var persona = function(id, nombre, apellidos, edad, email, direccion, telefono, contraseña, numeroTarjeta, codigoSeguridad, fechaVencimiento, tipo){
+              this.id = id;
+              this.nombre= nombre;
+              this.apellidos= apellidos;
+              this.edad= edad;
+              this.email= email;
+              this.direccion= direccion;
+              this.telefono= telefono;
+              this.contraseña = contraseña;
+              this.numeroTarjeta= numeroTarjeta;
+              this.codigoSeguridad= codigoSeguridad;
+              this.fechaVencimiento= fechaVencimiento;
+              this.tipo = tipo;
+          }
+
+            $(document).ready(function(){
+                $(document).ready(function(){
+                    usuario= sessionStorage.getItem("idUsuario")
+                    for(var i=0, l=localStorage.length; i < l; i++) {
+                        key = localStorage.key(i);
+                        if(usuario == key){
+                            personaGuardada = localStorage.getItem(key);
+                            personaGuardada = JSON.parse(personaGuardada);
+
+                            document.getElementById("nombre").value = personaGuardada.nombre;       
+                            document.getElementById("apellidos").value = personaGuardada.apellidos;
+                            document.getElementById("edad").value=personaGuardada.edad;
+                            document.getElementById("email").value = personaGuardada.email;
+                            document.getElementById("direccion").value= personaGuardada.direccion;
+                            document.getElementById("telefono").value=personaGuardada.telefono;
+                            document.getElementById("contraseña").value= personaGuardada.contraseña;
+                            document.getElementById("numTarjeta").value = personaGuardada.numeroTarjeta;
+                            document.getElementById("codSeguridad").value =personaGuardada.codigoSeguridad;
+                            document.getElementById("vencimiento").value =personaGuardada.fechaVencimiento;
+                        }
+                    }
+                
+                });
+
+                $("#bAgregar").click(function(){
+                    debugger;
+                    var idVar = sessionStorage.getItem("idUsuario");       
+                    var nom = document.getElementById("nombre").value;
+                    var apel = document.getElementById("apellidos").value;
+                    var edadVar = document.getElementById("edad").value;
+                    var emailVar = document.getElementById("email").value;
+                    var direccionVar= document.getElementById("direccion").value;
+                    var telefonoVar = document.getElementById("telefono").value;
+                    var contraseñaVar = document.getElementById("contraseña").value;
+                    var numTarjetaVar = document.getElementById("numTarjeta").value;
+                    var codSeguridadVar = document.getElementById("codSeguridad").value;
+                    var fechaVencimientoVar = document.getElementById("vencimiento").value;
+                    debugger;
+                    var nuevaPersona =  new persona(idVar, nom , apel, edadVar, emailVar,direccionVar,telefonoVar,contraseñaVar, numTarjetaVar, codSeguridadVar,fechaVencimientoVar);
+                    localStorage.setItem(idVar, JSON.stringify(nuevaPersona));
+                    alert("Datos Actualizados!!!")
+                
+                });
+
+
+                $("#bAgregar").click(function(){
+                    
+                
+                });
+                
+            });
+
+        </script>
+
+        <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Editar perfil de usuario</h1>
+                    <script type="text/javascript">
+                    //document.write("Bienvenido(a) " + sessionStorage.username + "<br>");
+                    </script>
+
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Información del usuario
+                        </div>
+                        <div class="panel-body">
+                            <div class="row" >
+                                <div class="col-lg-6">
+                                    <form role="form" id="form1">
+                                    
+                                        <div class="form-group">
+                                            <label>Nombre</label>
+                                            <input class="form-control" placeholder="Nombre" id="nombre">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Apellidos</label>
+                                            <input class="form-control" placeholder="Apellidos" id="apellidos">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Edad</label>
+                                            <input class="form-control" placeholder="Edad" id="edad">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Email</label>
+                                            <input class="form-control" placeholder="Email" id="email">
+                                        </div>
+                                         <div class="form-group">
+                                            <label>Dirección</label>
+                                            <input class="form-control" placeholder="Dirección" id="direccion">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Telefono</label>
+                                            <input class="form-control" placeholder="Telefono" id="telefono">
+                                        </div>        
+
+                                         <div class="form-group">
+                                            <label>Contraseña</label>
+                                            <input class="form-control" placeholder="Contraseña" id="contraseña">
+                                        </div>   
+
+                                         <div class="form-group">
+                                            <label>Numero de tarjeta</label>
+                                            <input class="form-control" placeholder="Numero de tarjeta" id="numTarjeta">
+                                        </div>     
+
+                                         <div class="form-group">
+                                            <label>Codigo de seguridad</label>
+                                            <input class="form-control" placeholder="Codigo de seguridad" id="codSeguridad">
+                                        </div>
+
+                                         <div class="form-group">
+                                            <label>Fecha de vencimiento</label>
+                                            <input class="form-control" placeholder="Vencimiento" id="vencimiento">
+                                        </div>                      
+                                    
+                                        <button id="bAgregar" href='administrador.html' class="btn btn-default">Actualizar Datos</button>
+
+                                        <button type="submit" class="btn btn-default"><a href="eliminarProducto.html">Eliminar producto</a></button>  
+                                        
+                                    </form>
+                                </div>
+                                <div class="col-lg-6">
+                                                                    
+                                </div>
+                                <div id="resultado"></div>
+                                <!-- /.col-lg-6 (nested) -->
+                                
+                                <!-- /.col-lg-6 (nested) -->
+                            </div>
+                            <!-- /.row (nested) -->
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+
+
+</body>
+
+</html>

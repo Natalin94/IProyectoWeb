@@ -101,15 +101,14 @@
 	       			if(arregloZ[i].id == sessionStorage.getItem("username")){
 	       				
 	       				for (var j=0, n=arregloProductos.length; j < n; j++){
-	       					if(arregloProductos[j].id == arregloZ[i].idZap){
-	       						addElement(arregloProductos[j].imagen, arregloProductos[j].id)
+	       					if(arregloProductos[j].idP == arregloZ[i].idZap){
+	       						addElement(arregloProductos[j].imagen, arregloProductos[j].idP)
 		       					debugger;	
 	       					}		
 	       				}
 	       			}	        								
 	        	} 
 		       	
-
 		        function addElement (url, elemento) { 
 				  // crea un nuevo div 
 				  // y añade contenido 
@@ -151,11 +150,11 @@
 					if (arregloCarro == null){
 						array=[];
 						localStorage.setItem("listaCarro",array);
-						alert("Entro al if")
+						//alert("Entro al if")
 						agregarAlCarro(true, botonId);
 					}
 					else{
-						alert("Entró al else")
+						//alert("Entró al else")
 						agregarAlCarro(false, botonId);
 					}		
 						
@@ -186,6 +185,7 @@
 		        	prueba= JSON.stringify(persona);
 					array.push(persona);
 					localStorage.setItem("listaCarro",JSON.stringify(array));
+					alert("Producto agregado satisfactoriamente!!");
 				}
 
 		    });		

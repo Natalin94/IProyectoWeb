@@ -59,6 +59,7 @@
         document.getElementById("fechaVencimientotxt").value ="";
         debugger;
         sessionStorage.setItem("username", nom);
+        sessionStorage.setItem("idUsuario", idVar);
 
 
        // document.write(localStorage.getItem('datos'));
@@ -89,6 +90,7 @@
               //linkNuevo.href = 'index.html';
               $("#butIniciarSesion").attr("href",linkNuevo.href);
               sessionStorage.setItem("username", personaGuardada.nombre);
+              sessionStorage.setItem("idUsuario", personaGuardada.id);
               break;
              // alert(personaGuardada.nombre);
             }

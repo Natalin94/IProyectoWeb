@@ -92,15 +92,16 @@
 		        	
 		       	if (valorReal == "Todos"){
 		       		for(var i=0, l=arregloZ.length; i < l; i++) {	        						
-						addElement(arregloZ[i].imagen, arregloZ[i].id);						
+						addElement(arregloZ[i].imagen, arregloZ[i].idP);						
 		        	} 
 		       	}
 
 		       	else{
 		       		for(var i=0, l=arregloZ.length; i < l; i++) {
+
 		        	
 						if (arregloZ[i].sexo == valorReal){
-							addElement(arregloZ[i].imagen, arregloZ[i].id);
+							addElement(arregloZ[i].imagen, arregloZ[i].idP);
 						}				
 		        	} 
 		       	}
@@ -143,7 +144,7 @@
 				$(".listaDeseos").click(function(){
 					arregloDeseos = localStorage.getItem("listaDeseos")
 					arregloDeseos = JSON.parse(arregloDeseos);
-					alert(this.id);
+					//alert(this.id);
 					array=[]
 					for(var i=0, l=arregloDeseos.length; i < l; i++) {
 						//document.write(arregloDeseos[i])
@@ -159,6 +160,7 @@
 		        	prueba= JSON.stringify(persona);
 					array.push(persona);
 					localStorage.setItem("listaDeseos",JSON.stringify(array));
+					alert("Producto agregado satisfactoriamente!!");
 				
 				});
 
@@ -170,11 +172,11 @@
 					if (arregloCarro == null){
 						array=[];
 						localStorage.setItem("listaCarro",array);
-						alert("Entro al if")
+						//alert("Entro al if")
 						agregarAlCarro(true, botonId);
 					}
 					else{
-						alert("Entró al else")
+						//alert("Entró al else")
 						agregarAlCarro(false, botonId);
 					}		
 						
@@ -206,6 +208,7 @@
 		        	prueba= JSON.stringify(persona);
 					array.push(persona);
 					localStorage.setItem("listaCarro",JSON.stringify(array));
+					alert("Producto agregado satisfactoriamente!!");
 				}
 
 		    });		
