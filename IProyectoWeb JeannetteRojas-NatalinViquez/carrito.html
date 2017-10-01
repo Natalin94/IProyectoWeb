@@ -13,7 +13,13 @@
 </head>
 <body>
 
-	
+	<style type="text/css">
+		h5{
+			text-align: center;
+			font-family: Arial;
+		}
+
+	</style>
 
 	<nav class="NavBar full">
 		<div class="row">
@@ -21,9 +27,6 @@
 			<ul class="NavBar-links col m9">
 				<li><a href="index.html" class="waves-effect">Home</a></li>
 				<li><a href="products.html" class="waves-effect">Products</a></li>
-				<!--<li><a href="#RegModal" class="waves-effect modal-trigger">Registration</a></li>
-				<li><a href="#!" class="waves-effect btn-shopcart">Shopcart</a></li>
-				<li><a href="#LoginModal" class="waves-effect modal-trigger">Login</a></li>	-->
 			</ul>
 			<i class="zmdi zmdi-more-vert full btn-menu hide-on-med-and-up waves-effect"></i>
 		</div>
@@ -73,40 +76,41 @@
 	</div>
 
 		<section>
+			<h5>Mi carrito</h5>
 		<div class="container">
 			<div class="row">
 
 			<script type="text/javascript">
 
+			
 
-			arregloZ = localStorage.getItem("productos");
+			arregloZ = localStorage.getItem("listaCarro");
 			arregloZ = JSON.parse(arregloZ);
+
+			arregloProductos = localStorage.getItem("productos");
+			arregloProductos = JSON.parse(arregloProductos);
 			
 			
 			$(document).ready(function(){ 
 			debugger; 
 		        $(document).ready(function(){   
-		        var URLactual = window.location.href;
-		        	var valor= URLactual.split('?')
-		        	valorReal= valor[1];
-		        	
-		       	if (valorReal == "Todos"){
-		       		for(var i=0, l=arregloZ.length; i < l; i++) {	        						
-						addElement(arregloZ[i].imagen, arregloZ[i].id);						
-		        	} 
-		       	}
-
-		       	else{
-		       		for(var i=0, l=arregloZ.length; i < l; i++) {
-		        	
-						if (arregloZ[i].sexo == valorReal){
-							addElement(arregloZ[i].imagen, arregloZ[i].id);
-						}				
-		        	} 
-		       	}
 		        
+	       		for(var i=0, l=arregloZ.length; i < l; i++) {
+	       			debugger;
 
-		        function addElement (url, elemento) { 
+	       			if(arregloZ[i].id == sessionStorage.getItem("username")){
+	       				
+	       				for (var j=0, n=arregloProductos.length; j < n; j++){
+	       					if(arregloProductos[j].id == arregloZ[i].idZap){
+	       						addElement(arregloProductos[j].imagen)
+		       					debugger;	
+	       					}		
+	       				}
+	       			}	        								
+	        	} 
+		       	
+
+		        function addElement (url) { 
 				  // crea un nuevo div 
 				  // y añade contenido 
 				  var newDiv = document.createElement("div"); 
@@ -120,15 +124,15 @@
     			  var butCarrito = document.createElement("INPUT");
 
     			  butListaDeseos.setAttribute("type", "button");
-    			  butListaDeseos.setAttribute("value", "Add listaDeseos");
-    			  butListaDeseos.setAttribute("class", "listaDeseos");
-    			  butListaDeseos.setAttribute("id",elemento);
+    			  butListaDeseos.setAttribute("value", "Eliminar");
+    			  butListaDeseos.setAttribute("class", "eliminarB");
+    			  //butListaDeseos.setAttribute("id",elemento);
 
 
     			  butCarrito.setAttribute("type", "button");    			 
-    			  butCarrito.setAttribute("value", "Add Carrito");
+    			  butCarrito.setAttribute("value", "Comprar");
     			  butCarrito.setAttribute("class", "listaCarrito");
-    			  butCarrito.setAttribute("id",elemento);
+    			 // butCarrito.setAttribute("id",elemento);
 
 
 				  // añade el elemento creado y su contenido al DOM 
@@ -140,29 +144,6 @@
 				  //document.body.insertBefore(newDiv, currentDiv); 
 				}   
 				
-				$(".listaDeseos").click(function(){
-					arregloDeseos = localStorage.getItem("listaDeseos")
-					arregloDeseos = JSON.parse(arregloDeseos);
-					alert(this.id);
-					array=[]
-					for(var i=0, l=arregloDeseos.length; i < l; i++) {
-						//document.write(arregloDeseos[i])
-						array.push(arregloDeseos[i]);						
-		        	} 
-		        	debugger;
-
-
-		        	var persona = {
-						id : sessionStorage.username,
-						idZap : this.id
-					};	
-		        	prueba= JSON.stringify(persona);
-					array.push(persona);
-					localStorage.setItem("listaDeseos",JSON.stringify(array));
-				
-				});
-
-
 				$(".listaCarrito").click(function(){
 					arregloCarro = localStorage.getItem("listaCarro")
 					botonId= this.id;
@@ -179,7 +160,6 @@
 					}		
 						
 				});
-
 
 				function agregarAlCarro(indicador, idBoton){
 

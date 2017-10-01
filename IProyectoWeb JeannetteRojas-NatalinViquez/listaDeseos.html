@@ -13,6 +13,14 @@
 </head>
 <body>
 
+	<style type="text/css">
+		h5{
+			text-align: center;
+			font-family: Arial;
+		}
+
+	</style>
+
 	<nav class="NavBar full">
 		<div class="row">
 			<div class="tittles NavBar-logo col s12 m3">Zapateria Online..</div>
@@ -68,6 +76,7 @@
 	</div>
 
 		<section>
+			<h5>Mi lista de deseos:</h5>
 		<div class="container">
 			<div class="row">
 
@@ -78,8 +87,8 @@
 			arregloZ = localStorage.getItem("listaDeseos");
 			arregloZ = JSON.parse(arregloZ);
 
-			arregloProductsos = localStorage.getItem("productos");
-			arregloProductos = JSON.parse(arregloProductsos);
+			arregloProductos = localStorage.getItem("productos");
+			arregloProductos = JSON.parse(arregloProductos);
 			
 			
 			$(document).ready(function(){ 
@@ -87,16 +96,21 @@
 		        $(document).ready(function(){   
 		        
 	       		for(var i=0, l=arregloZ.length; i < l; i++) {
+	       			debugger;
+
 	       			if(arregloZ[i].id == sessionStorage.getItem("username")){
-	       				for (var j=0, l=arregloProductos.length; j < l; j++){
-	       					addElement(arregloZ[i].imagen)				
+	       				
+	       				for (var j=0, n=arregloProductos.length; j < n; j++){
+	       					if(arregloProductos[j].id == arregloZ[i].idZap){
+	       						addElement(arregloProductos[j].imagen, arregloProductos[j].id)
+		       					debugger;	
+	       					}		
 	       				}
-	       			}	        						
-					addElement(arregloZ[i].imagen);						
+	       			}	        								
 	        	} 
 		       	
 
-		        function addElement (url) { 
+		        function addElement (url, elemento) { 
 				  // crea un nuevo div 
 				  // y añade contenido 
 				  var newDiv = document.createElement("div"); 
@@ -112,13 +126,13 @@
     			  butListaDeseos.setAttribute("type", "button");
     			  butListaDeseos.setAttribute("value", "Eliminar");
     			  butListaDeseos.setAttribute("class", "eliminarB");
-    			  //butListaDeseos.setAttribute("id",elemento);
+    			  butListaDeseos.setAttribute("id",elemento);
 
 
     			  butCarrito.setAttribute("type", "button");    			 
     			  butCarrito.setAttribute("value", "Add Carrito");
     			  butCarrito.setAttribute("class", "listaCarrito");
-    			 // butCarrito.setAttribute("id",elemento);
+    			  butCarrito.setAttribute("id",elemento);
 
 
 				  // añade el elemento creado y su contenido al DOM 
@@ -130,18 +144,49 @@
 				  //document.body.insertBefore(newDiv, currentDiv); 
 				}   
 				
-				$(".listaDeseos").click(function(){
-					arregloDeseos = localStorage.getItem("listaDeseos")
-					arregloDeseos = JSON.parse(arregloDeseos);
-					alert(this.id);
-					array=[]
-					for(var i=0, l=arregloDeseos.length; i < l; i++) {
-						document.write(arregloDeseos[i])
-						array.push(arregloDeseos[i]);						
-		        	} 
-					array.push("{id:'"+sessionStorage.username+"' , idZap:'"+this.id+"'}");
-					localStorage.setItem("listaDeseos",JSON.stringify(array));
+				$(".listaCarrito").click(function(){
+					arregloCarro = localStorage.getItem("listaCarro")
+					botonId= this.id;
+					debugger;
+					if (arregloCarro == null){
+						array=[];
+						localStorage.setItem("listaCarro",array);
+						alert("Entro al if")
+						agregarAlCarro(true, botonId);
+					}
+					else{
+						alert("Entró al else")
+						agregarAlCarro(false, botonId);
+					}		
+						
 				});
+
+				function agregarAlCarro(indicador, idBoton){
+
+					if (indicador == true){
+						arregloCarro = localStorage.getItem("listaCarro")
+					}
+
+					if (indicador == false){
+						arregloCarro = localStorage.getItem("listaCarro")
+						arregloCarro = JSON.parse(arregloCarro);
+					}
+				
+					array=[]
+					for(var i=0, l=arregloCarro.length; i < l; i++) {
+						//document.write(arregloDeseos[i])
+						array.push(arregloCarro[i]);						
+		        	} 
+		        	debugger;
+
+		        	var persona = {
+						id : sessionStorage.username,
+						idZap : idBoton
+					};	
+		        	prueba= JSON.stringify(persona);
+					array.push(persona);
+					localStorage.setItem("listaCarro",JSON.stringify(array));
+				}
 
 		    });		
 
