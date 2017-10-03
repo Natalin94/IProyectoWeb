@@ -10,7 +10,7 @@
     <meta name="author" content="">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 
-    <title>Mantenimiento de Productos</title>
+    <title>Consulta</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
@@ -25,40 +25,6 @@
     <link href="assets/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
     <script type="text/javascript">
-        $(document).ready(function(){
-            debugger;
-
-            $('#bEliminar').click(function(){
-                debugger;
-                arregloP = localStorage.getItem("productos");
-                arregloP = JSON.parse(arregloP);
-                array=[]
-                for (var i=0, l = arregloP.length; i<l; i++){
-                    array.push(arregloP[i]);                       
-                    var idEliminar = document.getElementById("id").value;
-                    debugger;
-                    if(arregloP[i].idP == idEliminar){
-                        debugger;
-                        //funcion eliminar
-                        array.splice(i,1);
-                        //array.removeItem(i);
-                        debugger;
-                        //delete array[i];
-                        debugger;
-                        alert('producto eliminado');
-                        break;
-                    }
-                    else{
-                        
-                    }
-                    alert('no lo encuentra');
-                }
-                localStorage.setItem("productos",JSON.stringify(array));
-
-                
-            });
-
-    });
 
     </script>
 
@@ -104,7 +70,7 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Eliminar productos</h1>
+                    <h1 class="page-header">Consultas</h1>
                     <script type="text/javascript">
                     //document.write("Bienvenido(a) " + sessionStorage.username + "<br>");
                     </script>
@@ -117,29 +83,30 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Información del producto
+                            Consultas disponibles
                         </div>
                         <div class="panel-body">
                             <div class="row" >
                                 <div class="col-lg-6">
                                     <form role="form" id="form1">
-                                        <li class="sidebar-search">
-                                            <label>Ingrese el identificador del producto a eliminar</label>
-                                             <div class="input-group custom-search-form">
-                                             <input class="form-control" placeholder="Identificador" id="id">
-                                             <span class="input-group-btn">
-                                             </span>
-                                             </div>
-                                         </li>
-                                        
                                         <div class="form-group">
-                                            
-                                        </div>                                      
+                                            <label>Consulta 1</label>
+                                            <button id="bConsulta1" href='reportes.html' class="btn btn-default">Ver consulta</button>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Consulta 2</label>
+                                            <button id="bConsulta2" href='reportes.html' class="btn btn-default">Ver consulta</button>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Consulta 3</label>
+                                            <button id="bConsulta3" href='reportes.html' class="btn btn-default">Ver consulta</button>                    
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Consulta 4</label>
+                                            <button id="bConsulta4" href='reportes.html' class="btn btn-default">Ver consulta</button>
+                                        </div>                                    
                                     
-                                        <a href="administrador.html" class="btn btn-default">Atrás</a>
-
-                                        <button type="reset" class="btn btn-default">Cancelar </button>
-                                        <button id="bEliminar" type="submit" class="btn btn-default">Eliminar producto</button>  
+                                        
                                     </form>
                                 </div>
                                 <div class="col-lg-6">

@@ -32,7 +32,7 @@
 
             
         var producto = function(idP, nombreP, descripcion, precio, cantidad,categoria,imagen) {
-            // body...
+            //body...
             this.idP = idP;
             this.nombreP = nombreP;
             this.descripcion = descripcion;
@@ -51,6 +51,7 @@
                     array.push(arregloP[i]);                       
                     var idBuscar = document.getElementById("id").value;
                     debugger;
+                    console.log("Paso por aca");
                     if(arregloP[i].idP == idBuscar){
                         debugger;
                         //cargar datos
@@ -58,11 +59,15 @@
                         debugger;
                         document.getElementById("nombre").value = arregloP[i].nombreP;
                         document.getElementById("descripcion").value = arregloP[i].descripcion;
+                        debugger;
                         document.getElementById("precio").value = arregloP[i].precio;
+                        debugger
                         document.getElementById("cantidad").value = arregloP[i].cantidad;
                         document.getElementById("categoria").value= arregloP[i].categoria;
                         document.getElementById("imagen").value = arregloP[i].imagen;
+                        debugger;
                         break;
+                        debugger;
                     }
                     else{
                         //alert('Intenta con otro id.');
@@ -128,7 +133,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="indexPrincipal.html">Inicio</a>
+                <a class="navbar-brand" href="indexPrincipal.html">Cerar sesión</a>
             </div>
             <!-- /.navbar-header -->
 
@@ -141,7 +146,7 @@
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
-                            <a href="#"><i style="font-size:20px"></i> Reportes</a>
+                            <a href="reportes.html"><i style="font-size:20px"></i> Consultas</a>
                         </li>
                        
                         
@@ -174,14 +179,12 @@
                             <div class="row" >
                                 <div class="col-lg-6">
                                     <form role="form" id="form1">
-                                        <li class="sidebar-search">
+                                        <div class="form-group">
                                             <label>Ingrese el identificador del producto</label>
-                                             <div class="input-group custom-search-form">
-                                             <input class="form-control" placeholder="Identificador" id="id">
-                                             <span class="input-group-btn">
-                                             </span>
-                                             </div>
-                                         </li>
+                                            <input class="form-control" placeholder="Identificador" id="id">
+                                            <span class="input-group-btn">
+                                            </span>
+                                        </div> 
                                         <div class="form-group">
                                             <button id="bCargarDatos">Cargar Datos</button>
                                         </div>
