@@ -4,7 +4,6 @@
 <head>
 
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -24,14 +23,14 @@
     <!-- Custom Fonts -->
     <link href="assets/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
-    <script type="text/javascript">
+    <script type="text/javascript" src="js/actualizarProducto.js">
 
     /*var arregloProductoGuardar= [{id : 'zap1', nombre : "Cat", descripcion : "Lindo", precio : 2000, cantidad : 50, imagen:"http://media15.liverpool.com.mx/web/images/products/es_MX/xl/1034253206.jpg", categoria: "Mujer" } , {id : 'zap2', nombre : "Cat", descripcion : "Lindo", precio : 2000, cantidad : 50, imagen:"http://www.play-school.es/images/images/category_7/Caterpillar-Bruin-CL281C9Z-Zapatillas-Bajas-Hombre-Zapatos.jpg", categoria: "Hombre" }]
 
             localStorage.setItem("productos",JSON.stringify(arregloProductoGuardar));*/
 
             
-        var producto = function(idP, nombreP, descripcion, precio, cantidad,categoria,imagen) {
+        /*var producto = function(idP, nombreP, descripcion, precio, cantidad,categoria,imagen) {
             //body...
             this.idP = idP;
             this.nombreP = nombreP;
@@ -40,43 +39,47 @@
             this.cantidad = cantidad;
             this.categoria = categoria;
             this.imagen = imagen;
-        }
+        }*/
+        /*
         $(document).ready(function(){
-            debugger;
-            $('#bCargarDatos').click(function(){
-                arregloP = localStorage.getItem("productos");
-                arregloP = JSON.parse(arregloP);
-                array=[]
+            //debugger;
+            var datoEncontrado; 
+            $('#bCargarDatos').click( function() {
+                var arregloP = localStorage.getItem("productos"),
+                    arregloP = JSON.parse(arregloP),
+                    array=[];
+                var idBuscar = document.getElementById("id").value;
                 for (var i=0, l = arregloP.length; i<l; i++){
                     array.push(arregloP[i]);                       
-                    var idBuscar = document.getElementById("id").value;
-                    debugger;
-                    console.log("Paso por aca");
+                    //var idBuscar = document.getElementById("id").value;
+                    //debugger;
                     if(arregloP[i].idP == idBuscar){
-                        debugger;
+                        //debugger;
                         //cargar datos
                         alert('encontrado');
-                        debugger;
-                        document.getElementById("nombre").value = arregloP[i].nombreP;
+                        /*document.getElementById("nombre").value = arregloP[i].nombreP;
                         document.getElementById("descripcion").value = arregloP[i].descripcion;
-                        debugger;
                         document.getElementById("precio").value = arregloP[i].precio;
-                        debugger
                         document.getElementById("cantidad").value = arregloP[i].cantidad;
                         document.getElementById("categoria").value= arregloP[i].categoria;
                         document.getElementById("imagen").value = arregloP[i].imagen;
-                        debugger;
-                        break;
-                        debugger;
-                    }
-                    else{
+                        //debugger;
+                        //document.getElementById("nombre").value = arregloP[i].nombreP;
+                        console.log(arregloP[i]);
+                        datoEncontrado = arregloP[i].nombreP;
+                        $("#nombre").val(arregloP[i].nombreP);
+                        //debugger;
+                        return;
+                    } else{
+                        console.log("Mae no lo encontre");
                         //alert('Intenta con otro id.');
                     }
+                    break;
                     alert('intenta con otro');
-
                 }
 
             });
+            
 
             $('#bActualizar').click(function(){
                 debugger;
@@ -102,7 +105,7 @@
                 localStorage.setItem("productos",JSON.stringify(array));
                 alert("Producto actualizado");
 
-                /*Limpiando los campos o inputs*/
+                /*Limpiando los campos o inputs
 
                 document.getElementById("id").value = "";
                 document.getElementById("nombre").value = "";
@@ -114,7 +117,7 @@
 
             });
 
-         });
+         });*/
 
     </script>
 
@@ -178,7 +181,7 @@
                         <div class="panel-body">
                             <div class="row" >
                                 <div class="col-lg-6">
-                                    <form role="form" id="form1">
+                                    <form role="form">
                                         <div class="form-group">
                                             <label>Ingrese el identificador del producto</label>
                                             <input class="form-control" placeholder="Identificador" id="id">
@@ -186,7 +189,8 @@
                                             </span>
                                         </div> 
                                         <div class="form-group">
-                                            <button id="bCargarDatos">Cargar Datos</button>
+                                            <!--bcargarProducto-->
+
                                         </div>
                                         <div class="form-group">
                                             <label>Nombre del producto</label>
@@ -217,8 +221,7 @@
                                         </div>                                      
                                     
                                         <a href="administrador.html" class="btn btn-default">Atrás</a>
-
-                                        <button type="reset" class="btn btn-default">Cancelar </button>  
+                                        <button id="bCargarDatos" >Cargar Datos</button>
                                         <button id="bActualizar" class="btn btn-default">Actualizar producto</button>
                                     </form>
                                 </div>
