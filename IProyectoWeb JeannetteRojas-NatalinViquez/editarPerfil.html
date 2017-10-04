@@ -79,8 +79,10 @@
 
         <script type="text/javascript">
 
+        var cantProductosAdquiridos= 0;
+        var cantDineroInvertido=0;
 
-        var persona = function(id, nombre, apellidos, edad, email, direccion, telefono, contraseña, numeroTarjeta, codigoSeguridad, fechaVencimiento, tipo){
+        var persona = function(id, nombre, apellidos, edad, email, direccion, telefono, contraseña, numeroTarjeta, codigoSeguridad, fechaVencimiento, tipo, productosAdquiridos,dineroInvertido ){
               this.id = id;
               this.nombre= nombre;
               this.apellidos= apellidos;
@@ -93,6 +95,8 @@
               this.codigoSeguridad= codigoSeguridad;
               this.fechaVencimiento= fechaVencimiento;
               this.tipo = tipo;
+              this.productosAdquiridos=productosAdquiridos;
+              this.dineroInvertido= dineroInvertido;
           }
 
             $(document).ready(function(){
@@ -103,6 +107,10 @@
                         if(usuario == key){
                             personaGuardada = localStorage.getItem(key);
                             personaGuardada = JSON.parse(personaGuardada);
+
+
+                            cantProductosAdquiridos= personaGuardada.productosAdquiridos;
+                            cantDineroInvertido= personaGuardada.dineroInvertido;
 
                             document.getElementById("nombre").value = personaGuardada.nombre;       
                             document.getElementById("apellidos").value = personaGuardada.apellidos;
@@ -133,7 +141,7 @@
                     var codSeguridadVar = document.getElementById("codSeguridad").value;
                     var fechaVencimientoVar = document.getElementById("vencimiento").value;
                     debugger;
-                    var nuevaPersona =  new persona(idVar, nom , apel, edadVar, emailVar,direccionVar,telefonoVar,contraseñaVar, numTarjetaVar, codSeguridadVar,fechaVencimientoVar);
+                    var nuevaPersona =  new persona(idVar, nom , apel, edadVar, emailVar,direccionVar,telefonoVar,contraseñaVar, numTarjetaVar, codSeguridadVar,fechaVencimientoVar, true, cantProductosAdquiridos, cantDineroInvertido);
                     localStorage.setItem(idVar, JSON.stringify(nuevaPersona));
                     alert("Datos Actualizados!!!")
                 

@@ -85,29 +85,32 @@
 			
 			$(document).ready(function(){ 
 			debugger; 
+
+			// MOSTRAR LOS ZAPATOS SEGUN LAS CATEGORIAS
 		        $(document).ready(function(){   
 		        var URLactual = window.location.href;
 		        	var valor= URLactual.split('?')
 		        	valorReal= valor[1];
+		        var parrafoEnviar;
 		        	
 		       	if (valorReal == "Todos"){
-		       		for(var i=0, l=arregloZ.length; i < l; i++) {	        						
-						addElement(arregloZ[i].imagen, arregloZ[i].idP);						
+		       		for(var i=0, l=arregloZ.length; i < l; i++) {
+		       			parrafoEnviar= "Nombre: "+ arregloZ[i].nombreP + " Precio: "+ arregloZ[i].precio + " Cantidad Disponible: "+ arregloZ[i].cantidad;	        						
+						addElement(arregloZ[i].imagen, arregloZ[i].idP, parrafoEnviar);						
 		        	} 
 		       	}
 
 		       	else{
-		       		for(var i=0, l=arregloZ.length; i < l; i++) {
-
-		        	
+		       		for(var i=0, l=arregloZ.length; i < l; i++) {		        	
 						if (arregloZ[i].sexo == valorReal){
-							addElement(arregloZ[i].imagen, arregloZ[i].idP);
+							parrafoEnviar= "Nombre: "+ arregloZ[i].nombreP + " Precio: "+ arregloZ[i].precio + " Cantidad Disponible: "+ arregloZ[i].cantidad;
+							addElement(arregloZ[i].imagen, arregloZ[i].idP, parrafoEnviar);
 						}				
 		        	} 
 		       	}
 		        
-
-		        function addElement (url, elemento) { 
+		       	// AGREGAR LOS PRODUCTOS AL CATALOGO (MODO VISTA)
+		        function addElement (url, elemento, parr) { 
 				  // crea un nuevo div 
 				  // y añade contenido 
 				  var newDiv = document.createElement("div"); 
@@ -116,6 +119,12 @@
     			  x.setAttribute("src", url);
     			  x.setAttribute("width", "250");
     			  x.setAttribute("height", "270");
+    			  debugger;
+    			 
+    			  var parrafo = document.createElement('p');
+				    var texto = document.createTextNode(parr);
+				    parrafo.appendChild(texto);
+    			  
     			  
     			  var butListaDeseos = document.createElement("INPUT");
     			  var butCarrito = document.createElement("INPUT");
@@ -136,11 +145,13 @@
 				  var currentDiv = document.getElementById("div1"); 
 				  document.getElementById("myHeader").appendChild(newDiv);
 				  document.getElementById("myHeader").appendChild(x);
+				  document.getElementById("myHeader").appendChild(parrafo);
 				  document.getElementById("myHeader").appendChild(butListaDeseos);
 				  document.getElementById("myHeader").appendChild(butCarrito);
 				  //document.body.insertBefore(newDiv, currentDiv); 
 				}   
 				
+				//AGREGAR EL PRODUCTO A LA LISTA DE DESEOS
 				$(".listaDeseos").click(function(){
 					arregloDeseos = localStorage.getItem("listaDeseos")
 					arregloDeseos = JSON.parse(arregloDeseos);
@@ -164,7 +175,7 @@
 				
 				});
 
-
+				// AGREGAR EL PRODUCTO
 				$(".listaCarrito").click(function(){
 					arregloCarro = localStorage.getItem("listaCarro")
 					botonId= this.id;
