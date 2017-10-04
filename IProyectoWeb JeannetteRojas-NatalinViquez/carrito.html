@@ -165,7 +165,7 @@
 	       						personaGuardada = localStorage.getItem(key);
             					personaGuardada = JSON.parse(personaGuardada);
 	       						if(personaGuardada.codigoSeguridad == codigoSeguridadVar && personaGuardada.fechaVencimiento == fechaDeVencimiento){
-	       							alert("Perfecto");
+	       							//alert("Perfecto");
 
 	       							for (var j=0, n=arregloProductos.length; j < n; j++){
 				       					if(arregloProductos[j].idP == idBoton){
@@ -180,6 +180,7 @@
 	       							var nuevaPersona =  new persona(personaGuardada.id, personaGuardada.nombre , personaGuardada.apellidos, personaGuardada.edad, personaGuardada.email, personaGuardada.direccion, personaGuardada.telefono, personaGuardada.contraseña, personaGuardada.numTarjeta, personaGuardada.codigoSeguridad,personaGuardada.fechaVencimiento, true, nuevoPAdquiridos, nuevoCantDinero);
 	       							localStorage.setItem(user, JSON.stringify(nuevaPersona));
 	       							invocarAlHistorial(idBoton);
+	       							
 	       						}
 	       					}		
 	       				}		       		   
@@ -189,7 +190,7 @@
 				// DE AQUI SE LLAMA A LA DE AGREGAR AL HISTORIAL
 				function invocarAlHistorial(idBoton) {
 					historial = localStorage.getItem("listaHistorial")
-					alert("entra al invocar", idBoton);
+					//alert("entra al invocar", idBoton);
 					if (historial == null){
 						array=[];
 						localStorage.setItem("listaHistorial",array);
@@ -224,29 +225,31 @@
 		        	prueba= JSON.stringify(historial);
 					array.push(historial);
 					localStorage.setItem("listaHistorial",JSON.stringify(array));
-					alert("Producto agregado satisfactoriamente!!");
-
+					alert("Has comprado el producto.");
+					funcionEliminar(idBoton);
 			    } 	
 
 				// FUNCION PARA ELIMINAR UN PRODUCTO DEL CARRITO
 				$(".eliminarElemento").click(function(){
+					botID= this.id;	
+					funcionEliminar(botID);
+									
+				});
+
+				function funcionEliminar(botID){
 					lisCarro = localStorage.getItem("listaCarro")
 					lisCarro= JSON.parse(lisCarro);
-					array=[];
-					
-					botID= this.id;
-				
+					array=[];		
 
 					for (var j=0, n=lisCarro.length; j < n; j++){
 	       					if(lisCarro[j].idZap == botID && lisCarro[j].id == sessionStorage.getItem("username") ){
-	       						lisCarro.splice(j, 1);
-	       						alert(lisCarro[j]);	
+	       						lisCarro.splice(j, 1);	
 								localStorage.setItem("listaCarro",JSON.stringify(lisCarro));
 								window.location= "carrito.html";
 	       						break;
 	       				}		
-	       			}								
-				});
+	       			}				
+				}
 
 		    });		
 
