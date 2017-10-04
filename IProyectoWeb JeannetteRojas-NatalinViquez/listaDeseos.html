@@ -43,34 +43,6 @@
 						<a class="btn-floating waves-effect waves-light green tooltipped" data-position="bottom" data-tooltip="Confirm purchase"><i class="zmdi zmdi-money"></i></a>
 					</p>
 				</div>
-				<div class="col s12 m6 valign">
-					<table class="centered highlight responsive-table">
-				        <thead>
-				          	<tr>
-								<th>Product</th>
-								<th>Price</th>
-				          	</tr>
-				        </thead>
-				        <tbody>
-					        <tr>
-					            <td>Product #1</td>
-					            <td>$7</td>
-					        </tr>
-					        <tr>
-					            <td>Product #2</td>
-					            <td>$7</td>
-					        </tr>
-					        <tr>
-					            <td>Product #3</td>
-					            <td>$7</td>
-					        </tr>
-				        	<tr>
-				        		<td>Total</td>
-				        		<td>$21</td>
-				        	</tr>
-				        </tbody>
-      				</table>	
-				</div>
 			</div>
 		</div>
 	</div>
@@ -187,6 +159,28 @@
 					localStorage.setItem("listaCarro",JSON.stringify(array));
 					alert("Producto agregado satisfactoriamente!!");
 				}
+
+				$(".eliminarB").click(function(){
+					deseos = localStorage.getItem("listaDeseos")
+					deseos= JSON.parse(deseos);
+					array=[];
+					
+					botonId= this.id;
+					debugger;
+
+					for (var j=0, n=deseos.length; j < n; j++){
+	       					if(deseos[j].idZap == botonId && deseos[j].id == sessionStorage.getItem("username") ){
+	       						deseos.splice(j, 1);
+	       						//alert(deseos[j]);	
+								localStorage.setItem("listaDeseos",JSON.stringify(deseos));
+								window.location= "listaDeseos.html";
+	       						break;
+	       				}		
+	       			}						
+						
+				});
+
+
 
 		    });		
 

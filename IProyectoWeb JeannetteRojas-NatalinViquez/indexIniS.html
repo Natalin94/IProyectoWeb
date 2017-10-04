@@ -9,7 +9,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 
   <script type="text/javascript">
-    var persona = function(id, nombre, apellidos, edad, email, direccion, telefono, contraseña, numeroTarjeta, codigoSeguridad, fechaVencimiento, tipo){
+    var persona = function(id, nombre, apellidos, edad, email, direccion, telefono, contraseña, numeroTarjeta, codigoSeguridad, fechaVencimiento, tipo, productosAdquiridos, dineroInvertido){
       this.id = id;
       this.nombre= nombre;
       this.apellidos= apellidos;
@@ -22,6 +22,8 @@
       this.codigoSeguridad= codigoSeguridad;
       this.fechaVencimiento= fechaVencimiento;
       this.tipo = tipo;
+      this.productosAdquiridos= productosAdquiridos;
+      this.dineroInvertido= dineroInvertido;
   }
 
   $(document).ready(function(){    
@@ -39,7 +41,7 @@
         var codSeguridadVar = document.getElementById("codSeguridadtxt").value;
         var fechaVencimientoVar = document.getElementById("fechaVencimientotxt").value;
 
-        var nuevaPersona =  new persona(idVar, nom , apel, edadVar, emailVar,direccionVar,telefonoVar,contraseñaVar, numTarjetaVar, codSeguridadVar,fechaVencimientoVar);
+        var nuevaPersona =  new persona(idVar, nom , apel, edadVar, emailVar,direccionVar,telefonoVar,contraseñaVar, numTarjetaVar, codSeguridadVar,fechaVencimientoVar, true, 0 , 0);
         localStorage.setItem(idVar, JSON.stringify(nuevaPersona));
 
         debugger;

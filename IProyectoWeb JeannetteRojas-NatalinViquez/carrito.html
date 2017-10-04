@@ -26,7 +26,7 @@
 			<div class="tittles NavBar-logo col s12 m3">Zapateria Online..</div>
 			<ul class="NavBar-links col m9">
 				<li><a href="index.html" class="waves-effect">Home</a></li>
-				<li><a href="products.html" class="waves-effect">Products</a></li>
+				
 			</ul>
 			<i class="zmdi zmdi-more-vert full btn-menu hide-on-med-and-up waves-effect"></i>
 		</div>
@@ -42,34 +42,6 @@
 						<a class="btn-floating waves-effect waves-light red tooltipped" data-position="bottom" data-tooltip="Empty cart" style="margin-right: 17px;"><i class="zmdi zmdi-delete"></i></a>
 						<a class="btn-floating waves-effect waves-light green tooltipped" data-position="bottom" data-tooltip="Confirm purchase"><i class="zmdi zmdi-money"></i></a>
 					</p>
-				</div>
-				<div class="col s12 m6 valign">
-					<table class="centered highlight responsive-table">
-				        <thead>
-				          	<tr>
-								<th>Product</th>
-								<th>Price</th>
-				          	</tr>
-				        </thead>
-				        <tbody>
-					        <tr>
-					            <td>Product #1</td>
-					            <td>$7</td>
-					        </tr>
-					        <tr>
-					            <td>Product #2</td>
-					            <td>$7</td>
-					        </tr>
-					        <tr>
-					            <td>Product #3</td>
-					            <td>$7</td>
-					        </tr>
-				        	<tr>
-				        		<td>Total</td>
-				        		<td>$21</td>
-				        	</tr>
-				        </tbody>
-      				</table>	
 				</div>
 			</div>
 		</div>
@@ -102,7 +74,7 @@
 	       				
 	       				for (var j=0, n=arregloProductos.length; j < n; j++){
 	       					if(arregloProductos[j].idP == arregloZ[i].idZap){
-	       						addElement(arregloProductos[j].imagen)
+	       						addElement(arregloProductos[j].imagen, arregloProductos[j].idP)
 		       					debugger;	
 	       					}		
 	       				}
@@ -110,7 +82,7 @@
 	        	} 
 		       	
 
-		        function addElement (url) { 
+		        function addElement (url, elemento) { 
 				  // crea un nuevo div 
 				  // y añade contenido 
 				  var newDiv = document.createElement("div"); 
@@ -125,14 +97,14 @@
 
     			  butListaDeseos.setAttribute("type", "button");
     			  butListaDeseos.setAttribute("value", "Eliminar");
-    			  butListaDeseos.setAttribute("class", "eliminarB");
-    			  //butListaDeseos.setAttribute("id",elemento);
+    			  butListaDeseos.setAttribute("class", "eliminarElemento");
+    			  butListaDeseos.setAttribute("id",elemento);
 
 
     			  butCarrito.setAttribute("type", "button");    			 
     			  butCarrito.setAttribute("value", "Comprar");
-    			  butCarrito.setAttribute("class", "listaCarrito");
-    			 // butCarrito.setAttribute("id",elemento);
+    			  butCarrito.setAttribute("class", "comprarB");
+    			  butCarrito.setAttribute("id",elemento);
 
 
 				  // añade el elemento creado y su contenido al DOM 
@@ -144,26 +116,66 @@
 				  //document.body.insertBefore(newDiv, currentDiv); 
 				}   
 				
-				$(".listaCarrito").click(function(){
-					arregloCarro = localStorage.getItem("listaCarro")
-					botonId= this.id;
-					debugger;
-					if (arregloCarro == null){
-						array=[];
-						localStorage.setItem("listaCarro",array);
-						
-						comprar(true, botonId);
-					}
-					else{
-						
-						comprar(false, botonId);
-					}		
+				$(".comprarB").click(function(){
+					myFunction()
 						
 				});
 
 				function comprar(indicador, idBoton){
 
 				}
+
+				function myFunction() {
+				    //var txt;
+				    var person = prompt("Indique el codigo de seguridad de su tarjeta:", "");
+				    
+				    if (person != null || person != "") {
+				       // txt = "User cancelled the prompt.";
+				       var codigoSeguridadVar= person;
+
+				    } 
+				    var fechaVencimiento = prompt("Fecha de vencimiento", "mm/aa");
+				     if (fechaVencimiento != null || fechaVencimiento != "") {
+				       // txt = "User cancelled the prompt.";
+				       var fechaDeVencimiento= fechaVencimiento;
+
+				    } 
+
+				    for (var j=0, n=localStorage.length; j < n; j++){
+				    	debugger;
+				    	key = localStorage.key(j);
+	       				if(key == sessionStorage.getItem("idUsuario")){
+	       						debugger;
+	       						personaGuardada = localStorage.getItem(key);
+            					personaGuardada = JSON.parse(personaGuardada);
+	       						if(personaGuardada.codigoSeguridad == codigoSeguridadVar && personaGuardada.fechaVencimiento == fechaDeVencimiento){
+	       							alert("Perfecto");
+	       						}
+	       					}		
+	       				}
+
+				    document.getElementById("demo").innerHTML = txt;
+				}
+
+
+				$(".eliminarElemento").click(function(){
+					lisCarro = localStorage.getItem("listaCarro")
+					lisCarro= JSON.parse(lisCarro);
+					array=[];
+					
+					botonId= this.id;
+					debugger;
+
+					for (var j=0, n=lisCarro.length; j < n; j++){
+	       					if(lisCarro[j].idZap == botonId && lisCarro[j].id == sessionStorage.getItem("username") ){
+	       						lisCarro.splice(j, 1);
+	       						alert(lisCarro[j]);	
+								localStorage.setItem("listaCarro",JSON.stringify(lisCarro));
+								window.location= "carrito.html";
+	       						break;
+	       				}		
+	       			}								
+				});
 
 		    });		
 
