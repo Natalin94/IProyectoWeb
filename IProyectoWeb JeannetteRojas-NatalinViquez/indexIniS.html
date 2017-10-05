@@ -7,9 +7,120 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
   <link rel="stylesheet" href="assets/css/style.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script type="text/javascript" src="js/darseBaja.js"></script>
 
-  <script type="text/javascript" src="js/inicioSesion.js">
+
+  <script type="text/javascript" src="js/inicioSesion.js"> </script>
     
+
+  <script type="text/javascript">
+    var persona = function(id, nombre, apellidos, edad, email, direccion, telefono, contraseña, numeroTarjeta, codigoSeguridad, fechaVencimiento, tipo, productosAdquiridos, dineroInvertido, estado){
+      this.id = id;
+      this.nombre= nombre;
+      this.apellidos= apellidos;
+      this.edad= edad;
+      this.email= email;
+      this.direccion= direccion;
+      this.telefono= telefono;
+      this.contraseña = contraseña;
+      this.numeroTarjeta= numeroTarjeta;
+      this.codigoSeguridad= codigoSeguridad;
+      this.fechaVencimiento= fechaVencimiento;
+      this.tipo = tipo;
+      this.productosAdquiridos= productosAdquiridos;
+      this.dineroInvertido= dineroInvertido;
+      this.estado = estado;
+  }
+
+  $(document).ready(function(){    
+    $('#butRegistrarse').click(function(){        
+        /*Captura de datos escrito en los inputs*/  
+        var idVar = document.getElementById("idtxt").value;       
+        var nom = document.getElementById("nombretxt").value;
+        var apel = document.getElementById("apellidostxt").value;
+        var edadVar = document.getElementById("edadtxt").value;
+        var emailVar = document.getElementById("emailtxt").value;
+        var direccionVar= document.getElementById("direccióntxt").value;
+        var telefonoVar = document.getElementById("telefonotxt").value;
+        var contraseñaVar = document.getElementById("contraseñatxt").value;
+        var numTarjetaVar = document.getElementById("numTarjetatxt").value;
+        var codSeguridadVar = document.getElementById("codSeguridadtxt").value;
+        var fechaVencimientoVar = document.getElementById("fechaVencimientotxt").value;
+
+        var nuevaPersona =  new persona(idVar, nom , apel, edadVar, emailVar,direccionVar,telefonoVar,contraseñaVar, numTarjetaVar, codSeguridadVar,fechaVencimientoVar, false, 0 , 0, true);
+        localStorage.setItem(idVar, JSON.stringify(nuevaPersona));
+
+        debugger;
+        /*Guardando los datos en el LocalStorage*/
+
+        /*Limpiando los campos o inputs*/
+        document.getElementById("idtxt").value ="";       
+        document.getElementById("nombretxt").value ="";
+        document.getElementById("apellidostxt").value="";
+        document.getElementById("edadtxt").value="";
+        document.getElementById("emailtxt").value ="";
+        document.getElementById("direccióntxt").value="";
+        document.getElementById("telefonotxt").value="";
+        document.getElementById("contraseñatxt").value="";
+        document.getElementById("numTarjetatxt").value = "";
+        document.getElementById("codSeguridadtxt").value ="";
+        document.getElementById("fechaVencimientotxt").value ="";
+        debugger;
+        sessionStorage.setItem("username", nom);
+        sessionStorage.setItem("idUsuario", idVar);
+
+
+       // document.write(localStorage.getItem('datos'));
+    });
+        var cont = 0;
+        $('#butIniciarSesion').click(function(){    
+        for(var i=0, l=localStorage.length; i < l; i++) {
+          var idIniciarVar = document.getElementById("idInicio").value;
+          var contraseñaIniciarVar = document.getElementById("contraseñaInicio").value;
+          debugger;
+          key = localStorage.key(i);
+          if(key == idIniciarVar){
+            personaGuardada = localStorage.getItem(key);
+            personaGuardada = JSON.parse(personaGuardada);
+            if(personaGuardada.contraseña == contraseñaIniciarVar){
+               debugger;
+              //document.write(personaGuardada.nombre + "<br>" + personaGuardada.apellido);
+              var linkNuevo = $("#butIniciarSesion");
+              if (personaGuardada.tipo == true){
+                linkNuevo.href = "administrador.html";
+              }
+              else{
+                linkNuevo.href = "index.html";
+                if (personaGuardada.estado == true){
+                linkNuevo.href = "index.html";
+                }
+                else{
+                  alert('Debes activar la membresía');
+                  linkNuevo.href = "indexPrincipal.html";
+                }
+              }
+              
+              debugger;
+              //linkNuevo.href = 'index.html';
+              $("#butIniciarSesion").attr("href",linkNuevo.href);
+              sessionStorage.setItem("username", personaGuardada.nombre);
+              sessionStorage.setItem("idUsuario", personaGuardada.id);
+              break;
+             // alert(personaGuardada.nombre);
+            }
+            else{
+              alert('Lo siento,contraseña incorrecta');
+            }
+          }
+
+          if(cont == localStorage.length-1){
+              alert('Lo siento,no se encuentra registrado');
+            }
+          cont ++;         
+        }    
+    });    
+});
+
 
   </script>
   
@@ -45,6 +156,9 @@
             </label>
             <input id="contraseñaInicio" type="password"required autocomplete="off"/>
           </div>
+          <h1><a id="bDarseAlta" href='' style="font-size:40px" >Activar membresía</a></h1>
+
+          <!--agregar boton que active membresia-->
 
           <h1><a id="butIniciarSesion" href='' style="font-size:40px" >Iniciar Sesión</a></h1>
          <!-- <p class="forgot"><a href="#">Olvidaste la contraseña</a></p>-->
