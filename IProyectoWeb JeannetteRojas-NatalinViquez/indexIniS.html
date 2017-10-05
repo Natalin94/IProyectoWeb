@@ -114,7 +114,24 @@
             }
           cont ++;         
         }    
-    });    
+    }); 
+    $('#bDarseAlta').click(function(){
+    for(var i=0, l=localStorage.length; i < l; i++) {
+      debugger;
+      var idIniciarVar = document.getElementById("idInicio").value;
+          var contraseñaIniciarVar = document.getElementById("contraseñaInicio").value;
+          debugger;
+          key = localStorage.key(i);
+          if(key == idIniciarVar){
+            debugger;
+            personaGuardada = localStorage.getItem(key);
+              personaGuardada = JSON.parse(personaGuardada);
+              personaGuardada.estado = true;
+              debugger;
+          }
+    }
+
+  });   
 });
 
   </script>
