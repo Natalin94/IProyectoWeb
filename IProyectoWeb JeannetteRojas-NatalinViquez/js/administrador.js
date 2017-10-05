@@ -30,6 +30,16 @@
                 //localStorage.setItem(idV, JSON.stringify(nuevoProducto));
                 debugger;
                 arregloP = localStorage.getItem("productos");
+
+                if (arregloP == null){
+                        array=[{id : 'zap1', nombre : "Cat", descripcion : "Lindo", precio : 2000, cantidad : 50, 
+                        imagen:"http://media15.liverpool.com.mx/web/images/products/es_MX/xl/1034253206.jpg", categoria: "Mujer" } 
+                        , {id : 'zap2', nombre : "Cat", descripcion : "Lindo", precio : 2000, cantidad : 50, 
+                        imagen:"http://www.play-school.es/images/images/category_7/Caterpillar-Bruin-CL281C9Z-Zapatillas-Bajas-Hombre-Zapatos.jpg", categoria: "Hombre" }];
+                        localStorage.setItem("productos",JSON.stringify(array));
+                        
+                    } 
+
                 arregloP = JSON.parse(arregloP);
                 array=[]
                 for(var i=0, l=arregloP.length; i < l; i++) {

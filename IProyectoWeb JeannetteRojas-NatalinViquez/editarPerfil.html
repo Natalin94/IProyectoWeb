@@ -40,18 +40,7 @@
             this.cantidad = cantidad;
             this.categoria = categoria;
             this.imagen = imagen;
-        }
-        $(document).ready(function(){
-            debugger;
-
-    
-
-            $('#bEliminar').click(function(){
-            
-                
-            });
-
-    });
+        }   
 
     </script>
 
@@ -72,9 +61,6 @@
                 </button>
                 <a class="navbar-brand" href="index.html">Inicio</a>
             </div>
-            <!-- /.navbar-header -->
-
-            <!-- /.navbar-static-side -->
         </nav>
 
         <script type="text/javascript">
@@ -108,7 +94,6 @@
                             personaGuardada = localStorage.getItem(key);
                             personaGuardada = JSON.parse(personaGuardada);
 
-
                             cantProductosAdquiridos= personaGuardada.productosAdquiridos;
                             cantDineroInvertido= personaGuardada.dineroInvertido;
 
@@ -141,7 +126,7 @@
                     var codSeguridadVar = document.getElementById("codSeguridad").value;
                     var fechaVencimientoVar = document.getElementById("vencimiento").value;
                     debugger;
-                    var nuevaPersona =  new persona(idVar, nom , apel, edadVar, emailVar,direccionVar,telefonoVar,contraseñaVar, numTarjetaVar, codSeguridadVar,fechaVencimientoVar, true, cantProductosAdquiridos, cantDineroInvertido);
+                    var nuevaPersona =  new persona(idVar, nom , apel, edadVar, emailVar,direccionVar,telefonoVar,contraseñaVar, numTarjetaVar, codSeguridadVar,fechaVencimientoVar, false, cantProductosAdquiridos, cantDineroInvertido);
                     localStorage.setItem(idVar, JSON.stringify(nuevaPersona));
                     alert("Datos Actualizados!!!")
                 
