@@ -13,6 +13,7 @@
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+		<script type="text/javascript" src="js/darseBaja.js"></script>
 	</head>
 	<body>
 		<div id="page-wrapper">
@@ -22,6 +23,7 @@
 
 					<!-- Logo -->
 						<h1><a href="index.html" id="logo">Zapateria Online<em>...</em></a></h1>
+						<button id="bDarseBaja">Darse de baja</button>
 
 						<script type="text/javascript">
 							document.write("Bienvenido(a) " + sessionStorage.username + "<br>");
@@ -58,7 +60,10 @@
 									<a href="#">Mi cuenta</a>
 									<ul>
 										<li><a href="editarPerfil.html">Editar perfil</a></li>
-										<li><a href="indexPrincipal.html">Cerrar Sesión</a></li>										
+										<li><a href="indexPrincipal.html">Cerrar Sesión</a></li>
+										<li><a id="bDarseBaja" href="indexPrincipal.html">Darse de baja</a>
+										</li>	
+
 									</ul>
 								</li>
 								

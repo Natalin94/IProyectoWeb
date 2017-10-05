@@ -7,9 +7,10 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
   <link rel="stylesheet" href="assets/css/style.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script type="text/javascript" src="js/darseBaja.js"></script>
 
   <script type="text/javascript">
-    var persona = function(id, nombre, apellidos, edad, email, direccion, telefono, contraseña, numeroTarjeta, codigoSeguridad, fechaVencimiento, tipo, productosAdquiridos, dineroInvertido){
+    var persona = function(id, nombre, apellidos, edad, email, direccion, telefono, contraseña, numeroTarjeta, codigoSeguridad, fechaVencimiento, tipo, productosAdquiridos, dineroInvertido, estado){
       this.id = id;
       this.nombre= nombre;
       this.apellidos= apellidos;
@@ -24,6 +25,7 @@
       this.tipo = tipo;
       this.productosAdquiridos= productosAdquiridos;
       this.dineroInvertido= dineroInvertido;
+      this.estado = estado;
   }
 
   $(document).ready(function(){    
@@ -41,7 +43,7 @@
         var codSeguridadVar = document.getElementById("codSeguridadtxt").value;
         var fechaVencimientoVar = document.getElementById("fechaVencimientotxt").value;
 
-        var nuevaPersona =  new persona(idVar, nom , apel, edadVar, emailVar,direccionVar,telefonoVar,contraseñaVar, numTarjetaVar, codSeguridadVar,fechaVencimientoVar, true, 0 , 0);
+        var nuevaPersona =  new persona(idVar, nom , apel, edadVar, emailVar,direccionVar,telefonoVar,contraseñaVar, numTarjetaVar, codSeguridadVar,fechaVencimientoVar, false, 0 , 0, true);
         localStorage.setItem(idVar, JSON.stringify(nuevaPersona));
 
         debugger;
@@ -74,8 +76,6 @@
           debugger;
           key = localStorage.key(i);
           if(key == idIniciarVar){
-            
-           
             personaGuardada = localStorage.getItem(key);
             personaGuardada = JSON.parse(personaGuardada);
             if(personaGuardada.contraseña == contraseñaIniciarVar){
@@ -87,7 +87,15 @@
               }
               else{
                 linkNuevo.href = "index.html";
+                if (personaGuardada.estado == "true"){
+                linkNuevo.href = "index.html";
+                }
+                else{
+                  alert('Debes activar la membresía');
+                  linkNuevo.href = "indexPrincipal.html";
+                }
               }
+              
               debugger;
               //linkNuevo.href = 'index.html';
               $("#butIniciarSesion").attr("href",linkNuevo.href);
@@ -143,6 +151,9 @@
             </label>
             <input id="contraseñaInicio" type="password"required autocomplete="off"/>
           </div>
+          <h1><a id="bDarseAlta" href='' style="font-size:40px" >Activar membresía</a></h1>
+
+          <!--agregar boton que active membresia-->
 
           <h1><a id="butIniciarSesion" href='' style="font-size:40px" >Iniciar Sesión</a></h1>
          <!-- <p class="forgot"><a href="#">Olvidaste la contraseña</a></p>-->
