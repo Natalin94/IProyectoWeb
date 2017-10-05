@@ -68,7 +68,7 @@
         var cantProductosAdquiridos= 0;
         var cantDineroInvertido=0;
 
-        var persona = function(id, nombre, apellidos, edad, email, direccion, telefono, contraseña, numeroTarjeta, codigoSeguridad, fechaVencimiento, tipo, productosAdquiridos,dineroInvertido ){
+        var persona = function(id, nombre, apellidos, edad, email, direccion, telefono, contraseña, numeroTarjeta, codigoSeguridad, fechaVencimiento, tipo, productosAdquiridos,dineroInvertido,estado ){
               this.id = id;
               this.nombre= nombre;
               this.apellidos= apellidos;
@@ -83,6 +83,7 @@
               this.tipo = tipo;
               this.productosAdquiridos=productosAdquiridos;
               this.dineroInvertido= dineroInvertido;
+              this.estado= estado;
           }
 
             $(document).ready(function(){
