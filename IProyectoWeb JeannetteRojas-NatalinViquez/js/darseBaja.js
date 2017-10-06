@@ -30,6 +30,7 @@ $(document).ready(function(){
 	        if(key == usuario){
 	        	debugger;
 	        	personaGuardada.estado = false;
+	        	estado= false;
 	        	debugger;
 	    		debugger;
 				var idVar = sessionStorage.getItem("idUsuario");       
@@ -45,7 +46,7 @@ $(document).ready(function(){
 		        var fechaVencimientoVar = document.getElementById("vencimiento").value;
 
 				var nuevaPersona =  new persona(idVar, nom , apel, edadVar, emailVar,direccionVar,telefonoVar,contraseñaVar, numTarjetaVar, codSeguridadVar,
-				     	fechaVencimientoVar, false, cantProductosAdquiridos, cantDineroInvertido, estado;
+				     	fechaVencimientoVar, false, cantProductosAdquiridos, cantDineroInvertido, estado);
 		        localStorage.setItem(idVar, JSON.stringify(nuevaPersona));
 		        alert('Estas de baja en el sistema, debes activar la membresía para poder comprar');
 
@@ -79,7 +80,7 @@ $(document).ready(function(){
 		        var fechaVencimientoVar = document.getElementById("vencimiento").value;
 
 				var nuevaPersona =  new persona(idVar, nom , apel, edadVar, emailVar,direccionVar,telefonoVar,contraseñaVar, numTarjetaVar, codSeguridadVar,
-				     	fechaVencimientoVar, false, cantProductosAdquiridos, cantDineroInvertido, estado;
+				     	fechaVencimientoVar, false, cantProductosAdquiridos, cantDineroInvertido, estado);
 		        localStorage.setItem(idVar, JSON.stringify(nuevaPersona));
 	        }
 		}

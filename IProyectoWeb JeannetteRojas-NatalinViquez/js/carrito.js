@@ -1,4 +1,4 @@
-var persona = function(id, nombre, apellidos, edad, email, direccion, telefono, contraseña, numeroTarjeta, codigoSeguridad, fechaVencimiento, tipo, productosAdquiridos, dineroInvertido){
+var persona = function(id, nombre, apellidos, edad, email, direccion, telefono, contraseña, numeroTarjeta, codigoSeguridad, fechaVencimiento, tipo, productosAdquiridos, dineroInvertido, estado){
 			      this.id = id;
 			      this.nombre= nombre;
 			      this.apellidos= apellidos;
@@ -13,7 +13,19 @@ var persona = function(id, nombre, apellidos, edad, email, direccion, telefono, 
 			      this.tipo = tipo;
 			      this.productosAdquiridos= productosAdquiridos;
 			      this.dineroInvertido= dineroInvertido;
+			      this.estado= estado;
 			  }
+
+        var producto = function(idP, nombreP, descripcion, precio, cantidad,categoria,imagen) {
+            // body...
+            this.idP = idP;
+            this.nombreP = nombreP;
+            this.descripcion = descripcion;
+            this.precio = precio;
+            this.cantidad = cantidad;
+            this.categoria = categoria;
+            this.imagen = imagen;
+        }
 			
 
 			arregloZ = localStorage.getItem("listaCarro");
@@ -114,20 +126,34 @@ var persona = function(id, nombre, apellidos, edad, email, direccion, telefono, 
 
 	       							for (var j=0, n=arregloProductos.length; j < n; j++){
 				       					if(arregloProductos[j].idP == idBoton){
-				       						debugger;
-				       							temporalPrecio= arregloProductos[j].precio;
+
+				       						if (arregloProductos[i].cantidad == 0){
+						        				alert("Lo siento, este producto ya no se encuentra disponible");
+						        				break;
+						        			}
+						        			else{
+						        				temporalPrecio= arregloProductos[j].precio;
+				       							nuevaCantidad= arregloProductos[j].cantidad -1;
+				       							var productoActualizado= new producto(arregloProductos[j].idP, arregloProductos[j].nombreP, 
+				       								arregloProductos[j].descripcion, arregloProductos[j].precio, nuevaCantidad,
+				       								arregloProductos[j].categoria, arregloProductos[j].imagen);
+
+				       							arregloProductos[j]= productoActualizado;
+				       							localStorage.setItem("productos", JSON.stringify(arregloProductos));
+
+				       							nuevoPAdquiridos= personaGuardada.productosAdquiridos+=1;
+				       							nuevoCantDinero = personaGuardada.dineroInvertido += temporalPrecio;
+
+				       							var nuevaPersona =  new persona(personaGuardada.id, personaGuardada.nombre ,
+				       							 personaGuardada.apellidos, personaGuardada.edad, personaGuardada.email, personaGuardada.direccion, 
+				       							 personaGuardada.telefono, personaGuardada.contraseña, personaGuardada.numTarjeta, personaGuardada.codigoSeguridad,personaGuardada.fechaVencimiento, false, nuevoPAdquiridos, nuevoCantDinero, true);
+				       							localStorage.setItem(user, JSON.stringify(nuevaPersona));
+				       							invocarAlHistorial(idBoton);
+									        			}
+				       							
 				       					}		
 				       				}
-				       				
-	       							nuevoPAdquiridos= personaGuardada.productosAdquiridos+=1;
-	       							nuevoCantDinero = personaGuardada.dineroInvertido += temporalPrecio;
 
-	       							var nuevaPersona =  new persona(personaGuardada.id, personaGuardada.nombre ,
-	       							 personaGuardada.apellidos, personaGuardada.edad, personaGuardada.email, personaGuardada.direccion, 
-	       							 personaGuardada.telefono, personaGuardada.contraseña, personaGuardada.numTarjeta, personaGuardada.codigoSeguridad,personaGuardada.fechaVencimiento, false, nuevoPAdquiridos, nuevoCantDinero);
-	       							localStorage.setItem(user, JSON.stringify(nuevaPersona));
-	       							invocarAlHistorial(idBoton);
-	       							
 	       						}
 	       					}		
 	       				}		       		   

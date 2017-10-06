@@ -1,4 +1,4 @@
-var persona = function(id, nombre, apellidos, edad, email, direccion, telefono, contraseña, numeroTarjeta, codigoSeguridad, fechaVencimiento, tipo, productosAdquiridos, dineroInvertido){
+var persona = function(id, nombre, apellidos, edad, email, direccion, telefono, contraseña, numeroTarjeta, codigoSeguridad, fechaVencimiento, tipo, productosAdquiridos, dineroInvertido, estado){
       this.id = id;
       this.nombre= nombre;
       this.apellidos= apellidos;
@@ -13,7 +13,9 @@ var persona = function(id, nombre, apellidos, edad, email, direccion, telefono, 
       this.tipo = tipo;
       this.productosAdquiridos= productosAdquiridos;
       this.dineroInvertido= dineroInvertido;
+      this.estado= estado;
   }
+
 
   $(document).ready(function(){    
     $('#butRegistrarse').click(function(){        
@@ -30,7 +32,7 @@ var persona = function(id, nombre, apellidos, edad, email, direccion, telefono, 
         var codSeguridadVar = document.getElementById("codSeguridadtxt").value;
         var fechaVencimientoVar = document.getElementById("fechaVencimientotxt").value;
 
-        var nuevaPersona =  new persona(idVar, nom , apel, edadVar, emailVar,direccionVar,telefonoVar,contraseñaVar, numTarjetaVar, codSeguridadVar,fechaVencimientoVar, false, 0 , 0);
+        var nuevaPersona =  new persona(idVar, nom , apel, edadVar, emailVar,direccionVar,telefonoVar,contraseñaVar, numTarjetaVar, codSeguridadVar,fechaVencimientoVar, false, 0 , 0, true);
         localStorage.setItem(idVar, JSON.stringify(nuevaPersona));
 
         debugger;
@@ -66,7 +68,9 @@ var persona = function(id, nombre, apellidos, edad, email, direccion, telefono, 
             
            debugger;
             personaGuardada = localStorage.getItem(key);
+            
             personaGuardada = JSON.parse(personaGuardada);
+
             if(personaGuardada.contraseña == contraseñaIniciarVar){
                debugger;
               //document.write(personaGuardada.nombre + "<br>" + personaGuardada.apellido);
@@ -77,6 +81,14 @@ var persona = function(id, nombre, apellidos, edad, email, direccion, telefono, 
               }
               else{
                 linkNuevo.href = "index.html";
+
+                  //if (personaGuardada.estado == true){
+                //linkNuevo.href = "index.html";
+                //}
+                //else{
+                //  alert('Debes activar la membresía');
+                  //linkNuevo.href = "indexPrincipal.html";
+                //}
               }
               debugger;
               //linkNuevo.href = 'index.html';
@@ -87,14 +99,33 @@ var persona = function(id, nombre, apellidos, edad, email, direccion, telefono, 
              // alert(personaGuardada.nombre);
             }
             else{
-              alert('Lo siento,contraseña incorrecta2');
+              alert('Lo siento,contraseña incorrecta');
+              break;
             }
           }
 
           if(cont == localStorage.length-1){
-              alert('Lo siento,no se encuentra registrado2');
+              alert('Lo siento,no se encuentra registrado');
             }
           cont ++;         
         }    
     });    
+
+    $('#bDarseAlta').click(function(){
+    for(var i=0, l=localStorage.length; i < l; i++) {
+      debugger;
+      var idIniciarVar = document.getElementById("idInicio").value;
+          var contraseñaIniciarVar = document.getElementById("contraseñaInicio").value;
+          debugger;
+          key = localStorage.key(i);
+          if(key == idIniciarVar){
+            debugger;
+            personaGuardada = localStorage.getItem(key);
+              personaGuardada = JSON.parse(personaGuardada);
+              personaGuardada.estado = true;
+              debugger;
+          }
+    }
+
+  });  
 });

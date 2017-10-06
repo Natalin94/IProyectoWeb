@@ -22,7 +22,7 @@
 
 		       	else{
 		       		for(var i=0, l=arregloZ.length; i < l; i++) {		        	
-						if (arregloZ[i].sexo == valorReal){
+						if (arregloZ[i].categoria == valorReal){
 							parrafoEnviar= "Nombre: "+ arregloZ[i].nombreP + " Precio: "+ arregloZ[i].precio + " Cantidad Disponible: "+ arregloZ[i].cantidad;
 							addElement(arregloZ[i].imagen, arregloZ[i].idP, parrafoEnviar);
 						}				
