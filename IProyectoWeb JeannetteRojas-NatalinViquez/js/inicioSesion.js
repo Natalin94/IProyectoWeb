@@ -64,13 +64,14 @@ var persona = function(id, nombre, apellidos, edad, email, direccion, telefono, 
           key = localStorage.key(i);
           if(key == idIniciarVar){
             
-           
+           debugger;
             personaGuardada = localStorage.getItem(key);
             personaGuardada = JSON.parse(personaGuardada);
             if(personaGuardada.contraseña == contraseñaIniciarVar){
                debugger;
               //document.write(personaGuardada.nombre + "<br>" + personaGuardada.apellido);
               var linkNuevo = $("#butIniciarSesion");
+              debugger;
               if (personaGuardada.tipo == true){
                 linkNuevo.href = "administrador.html";
               }
@@ -86,12 +87,12 @@ var persona = function(id, nombre, apellidos, edad, email, direccion, telefono, 
              // alert(personaGuardada.nombre);
             }
             else{
-              alert('Lo siento,contraseña incorrecta');
+              alert('Lo siento,contraseña incorrecta2');
             }
           }
 
           if(cont == localStorage.length-1){
-              alert('Lo siento,no se encuentra registrado');
+              alert('Lo siento,no se encuentra registrado2');
             }
           cont ++;         
         }    
