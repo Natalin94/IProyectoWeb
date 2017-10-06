@@ -25,7 +25,7 @@
 	        	});
 		    });
 
-
+					// ADD ELEMENTS HTLM 
 			     function addElement (url, elemento,nombreZapato) { 
 				  // crea un nuevo div 
 				  // y añade contenido 

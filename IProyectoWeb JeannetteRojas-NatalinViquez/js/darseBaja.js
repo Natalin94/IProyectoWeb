@@ -18,73 +18,25 @@ var persona = function(id, nombre, apellidos, edad, email, direccion, telefono, 
 
 
 $(document).ready(function(){
-	debugger;
-	$('#bDarseBaja').click(function(){
+	
+	$('#bDarseAlta').click(function(){
 		debugger;
-		usuario= sessionStorage.getItem("idUsuario");
+		var usuario = document.getElementById("idInicio").value;  
 		for(var i=0, l=localStorage.length; i < l; i++) {
+			 key = localStorage.key(i);
 			debugger;
 			personaGuardada = localStorage.getItem(key);
 	        personaGuardada = JSON.parse(personaGuardada);
 	        key = localStorage.key(i);
-	        if(key == usuario){
-	        	debugger;
-	        	personaGuardada.estado = false;
-	        	estado= false;
-	        	debugger;
-	    		debugger;
-				var idVar = sessionStorage.getItem("idUsuario");       
-		        var nom = document.getElementById("nombre").value;
-		        var apel = document.getElementById("apellidos").value;
-		        var edadVar = document.getElementById("edad").value;
-		        var emailVar = document.getElementById("email").value;
-		        var direccionVar= document.getElementById("direccion").value;
-		        var telefonoVar = document.getElementById("telefono").value;
-		        var contraseñaVar = document.getElementById("contraseña").value;
-		        var numTarjetaVar = document.getElementById("numTarjeta").value;
-		        var codSeguridadVar = document.getElementById("codSeguridad").value;
-		        var fechaVencimientoVar = document.getElementById("vencimiento").value;
-
-				var nuevaPersona =  new persona(idVar, nom , apel, edadVar, emailVar,direccionVar,telefonoVar,contraseñaVar, numTarjetaVar, codSeguridadVar,
-				     	fechaVencimientoVar, false, cantProductosAdquiridos, cantDineroInvertido, estado);
-		        localStorage.setItem(idVar, JSON.stringify(nuevaPersona));
-		        alert('Estas de baja en el sistema, debes activar la membresía para poder comprar');
-
+	        if(key == usuario){       
+	        	estado= true;	  
+				var nuevaPersona =  new persona(personaGuardada.id, personaGuardada.nombre , personaGuardada.apellidos, 
+					personaGuardada.edad, personaGuardada.email, personaGuardada.direccion, personaGuardada.telefono,
+					personaGuardada.contraseña, personaGuardada.numeroTarjeta, personaGuardada.codigoSeguridad, personaGuardada.fechaVencimiento, 
+					personaGuardada.tipo, personaGuardada.productosAdquiridos, personaGuardada.dineroInvertido, estado);
+		        localStorage.setItem(usuario, JSON.stringify(nuevaPersona));
+		        alert("Membresia Activada. Ahora inicia sesion con tus datos");
 	        }
 	  	}
-
-	});
-	$('#bDarseAlta').click(function(){
-		for(var i=0, l=localStorage.length; i < l; i++) {
-			debugger;
-			var idIniciarVar = document.getElementById("idInicio").value;
-	        var contraseñaIniciarVar = document.getElementById("contraseñaInicio").value;
-	        debugger;
-	        key = localStorage.key(i);
-	        if(key == idIniciarVar){
-	        	debugger;
-	        	personaGuardada = localStorage.getItem(key);
-            	personaGuardada = JSON.parse(personaGuardada);
-            	personaGuardada.estado = true;
-            	debugger;
-            	var idVar = sessionStorage.getItem("idUsuario");       
-		        var nom = document.getElementById("nombre").value;
-		        var apel = document.getElementById("apellidos").value;
-		        var edadVar = document.getElementById("edad").value;
-		        var emailVar = document.getElementById("email").value;
-		        var direccionVar= document.getElementById("direccion").value;
-		        var telefonoVar = document.getElementById("telefono").value;
-		        var contraseñaVar = document.getElementById("contraseña").value;
-		        var numTarjetaVar = document.getElementById("numTarjeta").value;
-		        var codSeguridadVar = document.getElementById("codSeguridad").value;
-		        var fechaVencimientoVar = document.getElementById("vencimiento").value;
-
-				var nuevaPersona =  new persona(idVar, nom , apel, edadVar, emailVar,direccionVar,telefonoVar,contraseñaVar, numTarjetaVar, codSeguridadVar,
-				     	fechaVencimientoVar, false, cantProductosAdquiridos, cantDineroInvertido, estado);
-		        localStorage.setItem(idVar, JSON.stringify(nuevaPersona));
-	        }
-		}
-
-
 	});
 });

@@ -1,3 +1,5 @@
+
+// create class persona
 var persona = function(id, nombre, apellidos, edad, email, direccion, telefono, contraseña, numeroTarjeta, codigoSeguridad, fechaVencimiento, tipo, productosAdquiridos, dineroInvertido, estado){
 			      this.id = id;
 			      this.nombre= nombre;
@@ -15,7 +17,7 @@ var persona = function(id, nombre, apellidos, edad, email, direccion, telefono, 
 			      this.dineroInvertido= dineroInvertido;
 			      this.estado= estado;
 			  }
-
+// create class producto
         var producto = function(idP, nombreP, descripcion, precio, cantidad,categoria,imagen) {
             // body...
             this.idP = idP;
@@ -52,7 +54,7 @@ var persona = function(id, nombre, apellidos, edad, email, direccion, telefono, 
 	       			}	        								
 	        	} 
 		       	
-
+	        	// ADD ELEMENTS HTML
 		        function addElement (url, elemento) { 
 				  // crea un nuevo div 
 				  // y añade contenido 
@@ -87,13 +89,13 @@ var persona = function(id, nombre, apellidos, edad, email, direccion, telefono, 
 				  //document.body.insertBefore(newDiv, currentDiv); 
 				}   
 
-				// ENLACE CON EL BOTON DE COMPRAR UN PRODUCTO
+				// LINK WITH THE BUTTON TO BUY A PRODUCT
 				$(".comprarB").click(function(){
 					botID= this.id;
 					myFunction(botID);
 						
 				});
-				// FUNCION DE COMPRAR UN PRODUCTO
+				// FUNCTION TO BUY PRODUCTS
 				function myFunction(idBoton) {
 				    //var txt;
 				    var person = prompt("Indique el codigo de seguridad de su tarjeta:", "");
@@ -159,8 +161,8 @@ var persona = function(id, nombre, apellidos, edad, email, direccion, telefono, 
 	       				}		       		   
 				}
 
-				// FUNCION PREVIA PARA AGREGAR AL HISTORIAL
-				// DE AQUI SE LLAMA A LA DE AGREGAR AL HISTORIAL
+				// PREVIOUS FUNCTION TO ADD TO THE HISTORY
+				// FROM HERE IT IS CALLED TO ADD TO THE HISTORY
 				function invocarAlHistorial(idBoton) {
 					historial = localStorage.getItem("listaHistorial")
 					//alert("entra al invocar", idBoton);
@@ -175,7 +177,7 @@ var persona = function(id, nombre, apellidos, edad, email, direccion, telefono, 
 					}	
 			    } 	
 
-			    //PARA AGREGAR AL HISTORIAL DEL CLIENTE
+			    //TO ADD TO CUSTOMER HISTORY
 			    function agregarAlHistorial(indicador, idBoton) {
 					if (indicador == true){
 						arregloHistorial = localStorage.getItem("listaHistorial")
@@ -202,13 +204,15 @@ var persona = function(id, nombre, apellidos, edad, email, direccion, telefono, 
 					funcionEliminar(idBoton);
 			    } 	
 
-				// FUNCION PARA ELIMINAR UN PRODUCTO DEL CARRITO
+				// FUNCTION TO DELETE A PRODUCT FROM THE CART
 				$(".eliminarElemento").click(function(){
 					botID= this.id;	
 					funcionEliminar(botID);
 									
 				});
 
+
+				// DELETE A PRODUCT FROM MY CART
 				function funcionEliminar(botID){
 					lisCarro = localStorage.getItem("listaCarro")
 					lisCarro= JSON.parse(lisCarro);

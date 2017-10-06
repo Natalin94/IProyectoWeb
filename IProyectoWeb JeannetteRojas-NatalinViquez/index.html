@@ -13,6 +13,8 @@
 		<link rel="stylesheet" href="assets/css/main.css" />
     	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 
+    	
+
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
 		<script type="text/javascript" >
@@ -29,7 +31,52 @@
 						<h1><a href="index.html" id="logo">Zapateria Online<em>...</em></a></h1>
 
 						<script type="text/javascript">
+
+
+						var persona = function(id, nombre, apellidos, edad, email, direccion, telefono, contraseña, numeroTarjeta, codigoSeguridad, fechaVencimiento, tipo, productosAdquiridos,dineroInvertido,estado ){
+							this.id = id;
+						    this.nombre= nombre;
+						    this.apellidos= apellidos;
+						    this.edad= edad;
+						    this.email= email;
+						    this.direccion= direccion;
+						    this.telefono= telefono;
+						    this.contraseña = contraseña;
+						    this.numeroTarjeta= numeroTarjeta;
+						    this.codigoSeguridad= codigoSeguridad;
+						    this.fechaVencimiento= fechaVencimiento;
+						    this.tipo = tipo;
+						    this.productosAdquiridos=productosAdquiridos;
+						    this.dineroInvertido= dineroInvertido;
+						    this.estado= estado;
+						    }
+
 							document.write("Bienvenido(a) " + sessionStorage.username + "<br>");
+
+						$(document).ready(function(){
+							debugger;
+							$('#bDarseBaja').click(function(){
+								debugger;
+								usuario= sessionStorage.getItem("idUsuario");
+								for(var i=0, l=localStorage.length; i < l; i++) {
+									 key = localStorage.key(i);
+									debugger;
+									personaGuardada = localStorage.getItem(key);
+							        personaGuardada = JSON.parse(personaGuardada);
+							    
+							        if(key == usuario){       
+							        	estado= false;	  
+
+										var nuevaPersona =  new persona(personaGuardada.id, personaGuardada.nombre , personaGuardada.apellidos, 
+											personaGuardada.edad, personaGuardada.email, personaGuardada.direccion, personaGuardada.telefono,
+											personaGuardada.contraseña, personaGuardada.numeroTarjeta, personaGuardada.codigoSeguridad, personaGuardada.fechaVencimiento, 
+											personaGuardada.tipo, personaGuardada.productosAdquiridos, personaGuardada.dineroInvertido, estado);
+								        localStorage.setItem(usuario, JSON.stringify(nuevaPersona));
+								      
+							        }
+							  	}
+							});
+						});
 						</script>
 					
 					<!-- Nav -->
@@ -52,9 +99,9 @@
 									<a href="#">Mi cuenta</a>
 									<ul>
 										<li><a href="editarPerfil.html">Editar perfil</a></li>
-										<li><a href="indexPrincipal.html">Cerrar Sesión</a></li>
 										<li><a id="bDarseBaja" href="indexPrincipal.html">Darse de baja</a>
-										</li>	
+										</li>
+										<li><a href="indexPrincipal.html">Cerrar Sesión</a></li>								
 
 									</ul>
 								</li>

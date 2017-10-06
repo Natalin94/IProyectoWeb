@@ -1,8 +1,4 @@
 
-
-
-
-
 			arregloZ = localStorage.getItem("listaDeseos");
 			arregloZ = JSON.parse(arregloZ);
 
@@ -79,6 +75,8 @@
 						
 				});
 
+
+				// ADD ELEMENTS TO THE CART
 				function agregarAlCarro(indicador, idBoton){
 					arregloZapatos = localStorage.getItem("productos");
 					arregloZapatos = JSON.parse(arregloZapatos);
@@ -102,7 +100,7 @@
 		        	for(var i=0, l=arregloZapatos.length; i < l; i++) {
 
 		        		if(arregloZapatos[i].idP == idBoton){
-		        			if (arregloZapatos[i].cantidad == 0){
+		        			if (arregloZapatos[i].cantidad <= 0){
 		        				alert("Lo siento, este producto ya no se encuentra disponible");
 		        				break;
 		        			}

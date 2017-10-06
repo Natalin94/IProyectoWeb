@@ -32,9 +32,9 @@
                 arregloP = localStorage.getItem("productos");
 
                 if (arregloP == null){
-                        array=[{id : 'zap1', nombre : "Cat", descripcion : "Lindo", precio : 2000, cantidad : 50, 
+                        array=[{id : 'zap1', nombre : "Tennis Vans", descripcion : "Color Gris con celeste", precio : 20000, cantidad : 10, 
                         imagen:"http://media15.liverpool.com.mx/web/images/products/es_MX/xl/1034253206.jpg", categoria: "Mujer" } 
-                        , {id : 'zap2', nombre : "Cat", descripcion : "Lindo", precio : 2000, cantidad : 50, 
+                        , {id : 'zap2', nombre : "Caterpillar 1", descripcion : "Cuero, color cafe", precio : 40000, cantidad : 15, 
                         imagen:"http://www.play-school.es/images/images/category_7/Caterpillar-Bruin-CL281C9Z-Zapatillas-Bajas-Hombre-Zapatos.jpg", categoria: "Hombre" }];
                         localStorage.setItem("productos",JSON.stringify(array));
                         
