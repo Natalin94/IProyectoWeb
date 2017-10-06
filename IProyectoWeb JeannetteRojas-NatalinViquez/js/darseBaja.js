@@ -66,6 +66,21 @@ $(document).ready(function(){
             	personaGuardada = JSON.parse(personaGuardada);
             	personaGuardada.estado = true;
             	debugger;
+            	var idVar = sessionStorage.getItem("idUsuario");       
+		        var nom = document.getElementById("nombre").value;
+		        var apel = document.getElementById("apellidos").value;
+		        var edadVar = document.getElementById("edad").value;
+		        var emailVar = document.getElementById("email").value;
+		        var direccionVar= document.getElementById("direccion").value;
+		        var telefonoVar = document.getElementById("telefono").value;
+		        var contraseñaVar = document.getElementById("contraseña").value;
+		        var numTarjetaVar = document.getElementById("numTarjeta").value;
+		        var codSeguridadVar = document.getElementById("codSeguridad").value;
+		        var fechaVencimientoVar = document.getElementById("vencimiento").value;
+
+				var nuevaPersona =  new persona(idVar, nom , apel, edadVar, emailVar,direccionVar,telefonoVar,contraseñaVar, numTarjetaVar, codSeguridadVar,
+				     	fechaVencimientoVar, false, cantProductosAdquiridos, cantDineroInvertido, estado;
+		        localStorage.setItem(idVar, JSON.stringify(nuevaPersona));
 	        }
 		}
 
